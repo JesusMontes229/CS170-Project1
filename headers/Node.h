@@ -7,6 +7,7 @@ class Node {
     public: 
         T data;
         Node<T> *next;
+        //test for commit
 
         Node (T value) : data(value), next(nullptr) ()
 };
