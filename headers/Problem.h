@@ -8,14 +8,6 @@ class Problem{
     int BlankSlateIndex;
     public:
     Problem(const int *Array, const int size);
-    bool CanLeftShift();
-    bool CanRightShift();
-    bool CanUpShift();
-    bool CanDownShift();
-    Problem LeftShift();
-    Problem RightShift();
-    Problem UpShift();
-    Problem DownShift();
     bool CanShift(ShiftDirection);
     Problem Shift(ShiftDirection);
     int GetIndex(int);
