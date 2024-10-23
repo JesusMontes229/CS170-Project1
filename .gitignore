@@ -1,3 +1,8 @@
 test/googletest
 CMakeFiles/Makefile.cmake
 CMakeFiles/Makefile2
+test/CMakeFiles/runAllTests.dir/CXX.includecache
+test/CMakeFiles/runAllTests.dir/depend.internal
+test/CMakeFiles/runAllTests.dir/depend.make
+test/CMakeFiles/runAllTests.dir/test.cpp.o
+test/runAllTests

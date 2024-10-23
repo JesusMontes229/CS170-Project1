@@ -1,11 +1,22 @@
 #include "../headers/Problem.h"
 #include <stdexcept>
+#include <unordered_map>
 Problem::Problem(const int *Array, const int size)
 {
     BlankSlateIndex = 0;
     Board.resize(size);
+    std::unordered_map < int, int> testMap;
+
     for(int i = 0; i < size; ++i)
     {
+        if(testMap.count(Array[i]) > 0 || Array[i] >= size)
+        {
+            throw std::runtime_error("INVALID ELEMENT IN THE BOARD");
+        }
+        else{
+            testMap[Array[i]] = Array[i];
+        }
+        
         if(Array[i] == 0){BlankSlateIndex = i;}
         Board.at(i) = Array[i];
     }
@@ -69,6 +80,9 @@ Problem Problem::Shift(ShiftDirection _direction)
         NewBoard.Board.at(NewBoard.BlankSlateIndex) = NewBoard.Board.at(NewBoard.BlankSlateIndex + i);
         NewBoard.Board.at(NewBoard.BlankSlateIndex + i) = BlankHolder;
         
+    }
+    else{
+        throw std::runtime_error("INVALID SHIFT");
     }
     return NewBoard;
 }
