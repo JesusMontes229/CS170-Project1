@@ -7,5 +7,4 @@ ADD_EXECUTABLE(runAllTests
 )
 
 TARGET_LINK_LIBRARIES(runAllTests gtest)
-target_link_libraries(runAllTests gmock gtest gtest_main)
 TARGET_COMPILE_DEFINITIONS(runAllTests PRIVATE gtest_disable_pthreads=ON)
