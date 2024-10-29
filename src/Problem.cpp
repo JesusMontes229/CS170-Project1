@@ -4,6 +4,7 @@
 Problem::Problem(const int *Array, const int size)
 {
     BlankSlateIndex = 0;
+    this->size = size;
     Board.resize(size);
     std::unordered_map < int, int> testMap;
 
@@ -102,4 +103,15 @@ int Problem::GetIndex(int Value)
 int Problem::GetValueAtIndex(int Index)
 {
     return Board.at(Index);
+}
+bool Problem::operator==(const Problem& RHS)
+{
+    for(int i = 0; i < this->size; ++i)
+    {
+        if(this->Board.at(i) != RHS.Board.at(i))
+        {
+            return false;
+        }
+    }
+    return true;
 }

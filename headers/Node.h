@@ -1,17 +1,30 @@
 #ifndef NODE_H
 #define NODE_H
+#include "Problem.h"
 
-template <typename T>
 
 class Node {
     public: 
-        T data;
-        int Heuristic;
-        Node<T> *next;
-        //test for commit
+    Node(Problem, int (*funct)(Problem));
+    ~Node();
+    Node* GetChildOfDirection(ShiftDirection);
+    bool operator()(const Node*, const Node*);
+    bool operator==(const Node* );
+    int getHeuristic(int); 
+    int setHeuristic() const;
+    int getCost(int);
+    int setCost() const;
+    Problem GetProblem() const;
+    Problem SetProblem(Problem);
+    private:
+    Problem CurrentState;
+    int edgeCost;
+    int heuristicCost;
+    Node* LeftMove;
+    Node* RightMove;
+    Node* UpMove;
+    Node* DownMove;
 
-        Node (T value) : data(value), next(nullptr) ()
-        bool operator()(Node * Obj1, Node * Obj2);
 };
 
 #endif

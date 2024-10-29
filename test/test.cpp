@@ -183,6 +183,7 @@ TEST(SHIFTMOVE, leftshift)
     EXPECT_EQ(TestBoard.GetValueAtIndex(6), 7);
     EXPECT_EQ(TestBoard.GetValueAtIndex(7), 0);
     EXPECT_EQ(TestBoard.GetValueAtIndex(8), 8);
+    delete[] arr;
 }
 TEST(SHIFTMOVE, invalidleftshift)
 {
@@ -193,7 +194,7 @@ TEST(SHIFTMOVE, invalidleftshift)
     arr[6] = 0;  arr[7] = 7; arr[8] = 8;
     Problem TestBoard(arr, size);
     ASSERT_ANY_THROW(TestBoard.Shift(LEFT));
-   
+   delete[] arr;
 }
 TEST(SHIFTMOVE, rightshift)
 {
@@ -212,7 +213,7 @@ TEST(SHIFTMOVE, rightshift)
     EXPECT_EQ(TestBoard.GetValueAtIndex(5), 0);
     EXPECT_EQ(TestBoard.GetValueAtIndex(6), 6);
     EXPECT_EQ(TestBoard.GetValueAtIndex(7), 7);
-    EXPECT_EQ(TestBoard.GetValueAtIndex(8), 8);
+    EXPECT_EQ(TestBoard.GetValueAtIndex(8), 8); delete[] arr;
 }
 TEST(SHIFTMOVE, invalidrightshift)
 {
@@ -223,7 +224,7 @@ TEST(SHIFTMOVE, invalidrightshift)
     arr[6] = 7;  arr[7] = 8; arr[8] = 0;
     Problem TestBoard(arr, size);
     ASSERT_ANY_THROW(TestBoard.Shift(RIGHT));
-   
+   delete[] arr;
 }
 TEST(SHIFTMOVE, upshift)
 {
@@ -243,6 +244,7 @@ TEST(SHIFTMOVE, upshift)
     EXPECT_EQ(TestBoard.GetValueAtIndex(6), 6);
     EXPECT_EQ(TestBoard.GetValueAtIndex(7), 7);
     EXPECT_EQ(TestBoard.GetValueAtIndex(8), 8);
+    delete[] arr;
 }
 TEST(SHIFTMOVE, invalidlUPshift)
 {
@@ -253,7 +255,7 @@ TEST(SHIFTMOVE, invalidlUPshift)
     arr[6] = 7;  arr[7] = 8; arr[8] = 6;
     Problem TestBoard(arr, size);
     ASSERT_ANY_THROW(TestBoard.Shift(UP));
-   
+   delete[] arr;
 }
 TEST(SHIFTMOVE, downshift)
 {
@@ -273,6 +275,7 @@ TEST(SHIFTMOVE, downshift)
     EXPECT_EQ(TestBoard.GetValueAtIndex(6), 6);
     EXPECT_EQ(TestBoard.GetValueAtIndex(7), 0);
     EXPECT_EQ(TestBoard.GetValueAtIndex(8), 8);
+    delete[] arr;
 }
 TEST(SHIFTMOVE, invalidDownshift)
 {
@@ -282,6 +285,40 @@ TEST(SHIFTMOVE, invalidDownshift)
     arr[3] = 4;  arr[4] = 5; arr[5] = 6; 
     arr[6] = 7;  arr[7] = 8; arr[8] = 0;
     Problem TestBoard(arr, size);
-    ASSERT_ANY_THROW(TestBoard.Shift(DOWN));
-   
+    ASSERT_ANY_THROW(TestBoard.Shift(DOWN));  
+    delete[] arr;
+}
+TEST(PROBLEM_EQ, not_equal)
+{
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 3; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 6; 
+    arr1[6] = 7;  arr1[7] = 8; arr1[8] = 0;
+    Problem TestBoard1(arr1, size);
+    int *arr2 = new int[9];
+    arr2[0] = 1;  arr2[1] = 2; arr2[2] = 3; 
+    arr2[3] = 4;  arr2[4] = 5; arr2[5] = 0; 
+    arr2[6] = 7;  arr2[7] = 8; arr2[8] = 6;
+    Problem TestBoard2(arr2, size);
+    EXPECT_FALSE(TestBoard1 == TestBoard2);  
+    delete[] arr1;
+    delete[] arr2;
+}
+TEST(PROBLEM_EQ, not_equal)
+{
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 3; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 6; 
+    arr1[6] = 7;  arr1[7] = 8; arr1[8] = 0;
+    Problem TestBoard1(arr1, size);
+    int *arr2 = new int[9];
+    arr2[0] = 1;  arr2[1] = 2; arr2[2] = 3; 
+    arr2[3] = 4;  arr2[4] = 5; arr2[5] = 6; 
+    arr2[6] = 7;  arr2[7] = 8; arr2[8] = 3;
+    Problem TestBoard2(arr2, size);
+    EXPECT_TRUE(TestBoard1 == TestBoard2);  
+    delete[] arr1;
+    delete[] arr2;
 }

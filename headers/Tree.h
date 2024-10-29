@@ -4,9 +4,12 @@
 
 class Tree{
     private:
-    Node* root; 
+    Node* root;
+    Node* CurrentNode;
     public:
     Tree(Node*);
+    ~Tree();
+    Node* getCurrentNode();
     Node* Expand(Node*);
 };
 
