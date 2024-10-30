@@ -39,6 +39,14 @@ public:
     int getDepth() const;
     ShiftDirection getMove() const;
 
+    //setters 
+    void setState(const Problem& state);
+    void setParent(Node* parent);
+    void setGCost(int g_cost);
+    void setHCost(int h_cost);
+    void setDepth(int depth);
+    void setMove(ShiftDirection move);
+
     void printState() const;
     //create and return all child nodes from current node states
     //for A* and Uniform Cost Search

@@ -17,6 +17,7 @@ bool Node::operator==(const Node* RHS){
 }
 */
 
+//getters 
 int Node::getTotalCost() const {
     return g_cost + h_cost;
 }
@@ -43,6 +44,31 @@ int Node::getDepth() const {
 
 ShiftDirection Node::getMove() const {
     return move;
+}
+
+//setters 
+void Node::setState(const Problem& state) {
+    this->state = state;
+}
+
+void Node::setParent(Node* parent) {
+    this->parent = parent;
+}
+
+void Node::setGCost(int g_cost) {
+    this->g_cost = g_cost;
+}
+
+void Node::setHCost(int h_cost) {
+    this->h_cost = h_cost;
+}
+
+void Node::setDepth(int depth) {
+    this->depth = depth;
+}
+
+void Node::setMove(ShiftDirection move) {
+    this->move = move;
 }
 
 void Node::printState() const {
