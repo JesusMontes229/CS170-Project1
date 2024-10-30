@@ -9,35 +9,43 @@ Node::Node(const Problem& state, Node* parent, int g_cost, int h_cost, ShiftDire
     }
 }
 
-int Node::GetTotalCost() const {
+/*bool Node::operator()(const Node* RHS, const Node* LHS){
+    return (RHS->heuristicCost + RHS->edgeCost) < (LHS->heuristicCost + LHS->edgeCost);
+}
+bool Node::operator==(const Node* RHS){
+    return (this->CurrentState == RHS->CurrentState);
+}
+*/
+
+int Node::getTotalCost() const {
     return g_cost + h_cost;
 }
 
-const Problem& Node::GetState() const {
+const Problem& Node::getState() const {
     return state;
 }
 
-Node* Node::GetParent() const {
+Node* Node::getParent() const {
     return parent;
 }
 
-int Node::GetGCost() const {
+int Node::getGCost() const {
     return g_cost;
 }
 
-int Node::GetHCost() const {
+int Node::getHCost() const {
     return h_cost;
 }
 
-int Node::GetDepth() const {
+int Node::getDepth() const {
     return depth;
 }
 
-ShiftDirection Node::GetMove() const {
+ShiftDirection Node::getMove() const {
     return move;
 }
 
-void Node::PrintState() const {
+void Node::printState() const {
     // Print the current board configuration
     for (int i = 0; i < 9; ++i) {
         if (i % 3 == 0 && i > 0) cout << '\n';
@@ -46,26 +54,42 @@ void Node::PrintState() const {
     cout << '\n';
 }
 
-vector<Node> Node::GenerateChildren() const {
+//gets the all the children nodes from the current Node and stores them into a vector 
+vector<Node*> Node::generateChildren() const {
     vector<Node> children;
     for (ShiftDirection dir : {LEFT, UP, RIGHT, DOWN}) {
         if (state.CanShift(dir)) {
             Problem newState = state.Shift(dir);
-            Node* child = new Node(newState, this, g_cost + 1, CalculateHeuristic(newState), dir);
+            Node* child = new Node(newState, this, g_cost + 1, calculateHeuristic(newState), dir);
             children.push_back(child);
         }
     }
     return children;
 }
 
-int Node::CalculateHeuristic(const Problem& state) const {
-    int heuristic = 0;
+int Node::calculateHeuristic(const Problem& state) const {
+     int heuristic = 0;
+    
+    // Loop through each tile
     for (int i = 0; i < 9; ++i) {
         int value = state.GetValueAtIndex(i);
-        if (value != 0) {
-            int targetIndex = value;
-            heuristic += abs(i / 3 - targetIndex / 3) + abs(i % 3 - targetIndex % 3);
+        
+        if (value != 0) { // Skip the blank tile
+            // Calculate the target index (1-8 mapped to 0-7)
+            int targetIndex = value - 1; // 0-based index
+            
+            // Current position of the tile (row, column)
+            int currentX = i % 3; // Column index in current state
+            int currentY = i / 3;  // Row index in current state
+
+            // Target position of the tile (row, column)
+            int targetX = targetIndex % 3; // Column index in goal state
+            int targetY = targetIndex / 3;  // Row index in goal state
+
+            // Calculate Euclidean distance
+            heuristic += static_cast<int>(sqrt(pow(currentX - targetX, 2) + pow(currentY - targetY, 2)));
         }
     }
+    
     return heuristic;
 }

@@ -26,6 +26,11 @@ public:
     //initializing everyrhting to nothing (constructor, intial state)
     Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost = 0, ShiftDirection move = ShiftDirection::NONE);
 
+    //bool operators 
+    bool operator()(const Node*, const Node*);
+    bool operator==(const Node* );
+
+    //getters
     int getTotalCost() const;
     const Problem& getState() const;
     Node* getParent() const;
