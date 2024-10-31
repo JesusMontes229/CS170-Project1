@@ -13,23 +13,24 @@ bool compareNodes(Node* lhs, Node* rhs) {
     return lhs->getTotalCost() < rhs->getTotalCost();
 }
 
-
 // solve function implements the A* misplaced tile algorithm 
 // A* algorithm wants to find the lowest cost 
 //(f_cost = g_cost (cost from start to current node) + h_cost(counting the number of tiles in the wrong place)) 
 Node* AStarMisplacedTile::solve(const Problem& initialState) {
-    //create vector of openList for the nodes that we need to generate the cost for 
+    // create vector of openList for the nodes that we need to generate the cost for 
     // holds the nodes we need to explore
     vector<Node*> openList; 
-    //create closedList to track the explored states 
+    // create closedList to track the explored states 
     unordered_set<Problem> closedList;
 
     // initialize root node with initial g_cost of 0
-    // h_cost of calculated hueristic cost with no shift direction 
+    // h_cost of calculated heuristic cost with no shift direction 
     Node* root = new Node(initialState, nullptr, 0, root->calculateHeuristic(initialState), ShiftDirection::NONE);
     // adding the root node to the openList 
     openList.push_back(root);
 
+    // initialize maxQueueSize to track the maximum size of the openList
+    int maxQueueSize = openList.size();
 
     // runs this while loop while the openList is not empty 
     // when openList is empty either no solution can be found or we have reached the goal
@@ -44,6 +45,8 @@ Node* AStarMisplacedTile::solve(const Problem& initialState) {
         // goal check
         // check if the currentNode is the goalstate
         if (currentNode->getState().isGoal()) {
+            // At this point, we have found the goal state
+            cout << "The maximum number of nodes in the queue at any one time: " << maxQueueSize << "." << endl;
             return currentNode; // return currentNode if this is the case
         }
 
@@ -57,13 +60,20 @@ Node* AStarMisplacedTile::solve(const Problem& initialState) {
                 delete child; 
                 continue;
             }
-            
+
             // update h_cost based on misplaced tile in the child state
             child->setHCost(child->calculateHeuristic(child->getState()));
-            //  add child to open list
+            // add child to open list
             openList.push_back(child);
+
+            // update maxQueueSize if the new openList size is larger than before
+            if (openList.size() > maxQueueSize) {
+                maxQueueSize = openList.size();
+            }
         }
     }
 
-    return nullptr; //this is in the case that no solution is found and we return a nullptr 
+    // if no solution is found
+    cout << "The maximum number of nodes in the queue at any one time: " << maxQueueSize << "." << endl;
+    return nullptr; // this is in the case that no solution is found and we return a nullptr 
 }
