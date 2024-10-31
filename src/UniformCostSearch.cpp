@@ -19,18 +19,18 @@ Node* UniformCostSearch::solve(const Problem& initialState) {
         Node* current = pq.top();
         pq.pop();
 
-        // Check if the current node is the goal state
+        //check if the current node is the goal state
         if (current->getState().isGoal()) {
-            return current; // Return the solution node
+            return current; //return the solution node
         }
 
-        nodesExpanded++; // Increment nodes expanded
+        nodesExpanded++; //increments nodes expanded
 
-        // Generate child nodes and add to the queue
+        //generate child nodes and add to the queue
         vector<Node*> children = current->generateChildren();
         for (Node* child : children) {
             pq.push(child);
         }
     }
-    return nullptr; // Return nullptr if no solution found
+    return nullptr; 
 }

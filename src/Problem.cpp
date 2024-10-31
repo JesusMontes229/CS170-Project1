@@ -103,3 +103,22 @@ int Problem::GetValueAtIndex(int Index)
 {
     return Board.at(Index);
 }
+
+//comparing board with the goalState to make sure that we have solved it
+bool Problem::isGoal() const {
+    static const std::vector<int> goalState = {1, 2, 3, 4, 5, 6, 7, 8, 0};
+    return Board == goalState;
+}
+
+//some test cases can't be solved so have a checker here to check that 
+bool Problem::isSolvable() const {
+    int inversions = 0;
+    for (int i = 0; i < Board.size(); ++i) {
+        for (int j = i + 1; j < Board.size(); ++j) {
+            if (Board[i] && Board[j] && Board[i] > Board[j]) {
+                ++inversions;
+            }
+        }
+    }
+    return inversions % 2 == 0;
+}
