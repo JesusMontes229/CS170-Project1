@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 #include "AStarMisplacedTile.h" // all three searches
-#include "UnfiformCostSearch.h"
+#include "UniformCostSearch.h"
 #include "AstarEuclidean.h"
 #include "Problem.h" 
 #include "Node.h" 
@@ -18,20 +18,19 @@ void printPuzzle(const Problem& problem) {
 }
 
 int main() {
-    cout << "Welcome to 862359197 8 puzzle solver." << endl; 
+    cout << "Welcome to XXX (change this to your student ID) 8 puzzle solver." << endl; 
     cout << "Type “1” to use a default puzzle, or “2” to enter your own puzzle." << endl;
 
     int choice;
     cin >> choice;
 
-    // we define a default puzzle
+    // define a default puzzle
     const int defaultPuzzle[] = {1, 2, 3, 4, 0, 5, 7, 8, 6};
-    Problem initialState(nullptr, 9); // nullptr intialize
+    Problem initialState(nullptr, 9); // nullptr initialize
 
     if (choice == 1) {
         // using default puzzle
         initialState = Problem(defaultPuzzle, 9);
-        // user-defined puzzle
     } else if (choice == 2) {
         cout << "Enter your puzzle, use a zero to represent the blank." << endl;
 
@@ -71,36 +70,50 @@ int main() {
             break;
         }
         case 3: {
-            AstarEuclideanTile solver;
-            resultNode = solver.solve(intialState);
+            AstarEuclidean solver;
+            resultNode = solver.solve(initialState);
             break;
         }
         default:
             cout << "Invalid choice." << endl;
-            return 1; // exit if the choice is invalid
+            return 1; // Exit if the choice is invalid
     }
 
     // print the results if there is a solution
     if (resultNode != nullptr) {
-        cout << "Goal!!!" << endl;
-
         // print the path from the initial state to the goal state
         vector<Node*> path;
         for (Node* node = resultNode; node != nullptr; node = node->getParent()) {
             path.push_back(node);
         }
 
-        cout << "Solution steps (from goal to initial):" << endl;
+        // output the expanding states with their g(n) and h(n)
         for (int i = path.size() - 1; i >= 0; --i) {
-            printPuzzle(path[i]->getState());
+            Node* currentNode = path[i];
+            int g_n = currentNode->getDepth(); // Cost to reach this node
+            int h_n = currentNode->calculateHeuristic(); // Heuristic value
+
+            // print the current state being expanded
+            cout << "Expanding state:" << endl;
+            printPuzzle(currentNode->getState());
+
+            // print the best state to expand
+            if (i > 0) { // ensure there's a next state to expand
+                Node* nextNode = path[i - 1];
+                cout << "The best state to expand with g(n) = " << g_n << " and h(n) = " << h_n << " is..." << endl;
+                printPuzzle(nextNode->getState());
+                cout << "Expanding this node..." << endl;
+            }
         }
 
+        cout << "Goal!!!" << endl;
         cout << "To solve this problem the search algorithm expanded a total of " 
-             << resultNode->getDepth() << " nodes." << endl; // print nodes expanded
+             << resultNode->getExpandedNodes() << " nodes." << endl; // print total nodes expanded
         cout << "The maximum number of nodes in the queue at any one time: " 
-             << solver.maxQueueSize << "." << endl; // display maxQueueSize
+             << resultNode->getMaxQueueSize() << "." << endl; // display maxQueueSize
         cout << "The depth of the goal node was " 
-             << resultNode->getDepth() << "." << endl;
+             << resultNode->getDepth() << "." << endl; // depth of the goal node
+
     } else {
         cout << "No solution found." << endl;
     }
