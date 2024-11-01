@@ -127,7 +127,7 @@ Problem::Problem()
 {
 
 }
-bool Problem::operator==(const Problem& RHS)
+bool Problem::operator==(const Problem& RHS) const
 {
     for(int i = 0; i < this->size; ++i)
     {

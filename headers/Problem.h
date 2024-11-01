@@ -19,7 +19,7 @@ class Problem{
     bool isGoal() const; 
     bool isSolvable() const; 
     int GetValueAtIndex(int) const;
-    bool operator==(const Problem& RHS);
+    bool operator==(const Problem& RHS) const;
         
 
 };

@@ -1,13 +1,8 @@
 #include "../headers/Node.h"
 #include <cmath>
 
-Node::Node(const Problem& state, Node* parent, int g_cost, int h_cost)
-    : state(state), parent(parent), g_cost(g_cost), h_cost(h_cost), move(move) {
-    //depth = parent;
-    if (parent) {
-        depth = parent->depth + 1; // Calculate depth based on the parent
-    }
-}
+Node::Node(const Problem& state, Node* parent, int g_cost, int h_cost, int depth)
+    : state(state), parent(parent), g_cost(g_cost), h_cost(h_cost), move(move), depth(depth) {}
 Node::Node()
 {
     
@@ -45,9 +40,9 @@ int Node::getDepth() const {
     return depth;
 }
 
-ShiftDirection Node::getMove() const {
+/*ShiftDirection Node::getMove() const {
     return move;
-}
+}*/
 
 //setters 
 void Node::setState(const Problem& state) {
@@ -82,20 +77,19 @@ void Node::printState() const {
     }
     cout << '\n';
 }
-
 //gets the all the children nodes from the current Node and stores them into a vector 
-const vector<Node*> Node::generateChildren() {
+const vector<Node*> Node::generateChildren(int (*heuristicfunc)(const Problem &)) {
     vector<Node*> children;
     for (ShiftDirection dir : {LEFT, UP, RIGHT, DOWN}) {
         if (state.CanShift(dir)) {
-            Node* child = new Node(state.Shift(dir),this, g_cost + 1,this->calculateHeuristic(state.Shift(dir)));
+            Node* child = new Node(state.Shift(dir), this, g_cost + 1,heuristicfunc(state.Shift(dir)), depth + 1);
             children.push_back(child);
         }
     }
     return children;
 }
 
-int Node::calculateHeuristic(const Problem& state) const {
+/*int Node::calculateHeuristic(const Problem& state) const {
      int heuristic = 0;
     
     // Loop through each tile
@@ -120,4 +114,4 @@ int Node::calculateHeuristic(const Problem& state) const {
     }
     
     return heuristic;
-}
+}*/

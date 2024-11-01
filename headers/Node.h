@@ -19,11 +19,11 @@ private:
     ShiftDirection move;
 
     //helper private function for calculating hueristic cost
-    int calculateHeuristic(const Problem& state) const;
+    //int calculateHeuristic(const Problem& state) const;
 
 public:
     //initializing everyrhting to nothing (constructor, intial state)
-    Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost = 0);
+    Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost, int depth = 0);
     Node();
 
     //bool operators 
@@ -37,7 +37,7 @@ public:
     int getGCost() const;
     int getHCost() const;
     int getDepth() const;
-    ShiftDirection getMove() const;
+    //ShiftDirection getMove() const;
 
     //setters 
     void setState(const Problem& state);
@@ -50,7 +50,7 @@ public:
     void printState() const;
     //create and return all child nodes from current node states
     //for A* and Uniform Cost Search
-    const vector<Node*> generateChildren();
+    const vector<Node*> generateChildren(int (*heuristicfunc)(const Problem &));
 };
 
 #endif // NODE_H
