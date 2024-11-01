@@ -2,8 +2,8 @@
 #include "../src/Problem.cpp"
 #include "../headers/Node.h"
 #include "../src/Node.cpp"
-#include "../headers/Algorithm.h"
-#include "../src/Algorithm.cpp"
+#include "../headers/AStarSearch.h"
+#include "../src/AStarSearch.cpp"
 #include "gtest/gtest.h"
 #include <string>
 
