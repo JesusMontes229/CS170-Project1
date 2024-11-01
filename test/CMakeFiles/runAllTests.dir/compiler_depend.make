@@ -164,22 +164,9 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   /usr/include/c++/8/bits/uses_allocator.h \
   /usr/include/c++/8/bits/invoke.h \
   /usr/include/c++/8/bits/unordered_map.h \
-  googletest/googletest/include/gtest/gtest.h \
-  /usr/include/c++/8/cstddef \
-  /usr/include/c++/8/limits \
-  /usr/include/c++/8/memory \
-  /usr/include/c++/8/bits/stl_tempbuf.h \
-  /usr/include/c++/8/bits/stl_raw_storage_iter.h \
-  /usr/include/c++/8/ext/concurrence.h \
-  /usr/include/c++/8/bits/unique_ptr.h \
-  /usr/include/c++/8/bits/shared_ptr.h \
-  /usr/include/c++/8/bits/shared_ptr_base.h \
-  /usr/include/c++/8/bits/allocated_ptr.h \
-  /usr/include/c++/8/bits/refwrap.h \
-  /usr/include/c++/8/bits/shared_ptr_atomic.h \
-  /usr/include/c++/8/bits/atomic_base.h \
-  /usr/include/c++/8/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/8/backward/auto_ptr.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Node.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Problem.h \
+  /usr/include/c++/8/iostream \
   /usr/include/c++/8/ostream \
   /usr/include/c++/8/ios \
   /usr/include/c++/8/bits/ios_base.h \
@@ -200,13 +187,57 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   /usr/include/c++/8/bits/locale_facets.tcc \
   /usr/include/c++/8/bits/basic_ios.tcc \
   /usr/include/c++/8/bits/ostream.tcc \
+  /usr/include/c++/8/istream \
+  /usr/include/c++/8/bits/istream.tcc \
+  /home/csmajs/jmont229/cs170/CS170-Project1/src/Node.cpp \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Node.h \
+  /usr/include/c++/8/cmath \
+  /usr/include/math.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/iscanonical.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Algorithm.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Node.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Problem.h \
+  /usr/include/c++/8/queue \
+  /usr/include/c++/8/deque \
+  /usr/include/c++/8/bits/stl_deque.h \
+  /usr/include/c++/8/bits/deque.tcc \
+  /usr/include/c++/8/bits/stl_heap.h \
+  /usr/include/c++/8/bits/stl_queue.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/src/Algorithm.cpp \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Algorithm.h \
+  /usr/include/c++/8/unordered_set \
+  /usr/include/c++/8/bits/unordered_set.h \
+  /usr/include/c++/8/functional \
+  /usr/include/c++/8/bits/refwrap.h \
+  /usr/include/c++/8/bits/std_function.h \
+  googletest/googletest/include/gtest/gtest.h \
+  /usr/include/c++/8/cstddef \
+  /usr/include/c++/8/limits \
+  /usr/include/c++/8/memory \
+  /usr/include/c++/8/bits/stl_tempbuf.h \
+  /usr/include/c++/8/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/8/ext/concurrence.h \
+  /usr/include/c++/8/bits/unique_ptr.h \
+  /usr/include/c++/8/bits/shared_ptr.h \
+  /usr/include/c++/8/bits/shared_ptr_base.h \
+  /usr/include/c++/8/bits/allocated_ptr.h \
+  /usr/include/c++/8/bits/shared_ptr_atomic.h \
+  /usr/include/c++/8/bits/atomic_base.h \
+  /usr/include/c++/8/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/8/backward/auto_ptr.h \
   /usr/include/c++/8/set \
   /usr/include/c++/8/bits/stl_tree.h \
   /usr/include/c++/8/bits/stl_set.h \
   /usr/include/c++/8/bits/stl_multiset.h \
   /usr/include/c++/8/sstream \
-  /usr/include/c++/8/istream \
-  /usr/include/c++/8/bits/istream.tcc \
   /usr/include/c++/8/bits/sstream.tcc \
   googletest/googletest/include/gtest/gtest-assertion-result.h \
   googletest/googletest/include/gtest/gtest-message.h \
@@ -215,7 +246,6 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   /usr/include/c++/8/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/c++/8/iostream \
   /usr/include/c++/8/locale \
   /usr/include/c++/8/bits/locale_facets_nonio.h \
   /usr/include/c++/8/ctime \
@@ -262,8 +292,6 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   googletest/googletest/include/gtest/internal/gtest-death-test-internal.h \
   googletest/googletest/include/gtest/gtest-matchers.h \
   /usr/include/c++/8/atomic \
-  /usr/include/c++/8/functional \
-  /usr/include/c++/8/bits/std_function.h \
   googletest/googletest/include/gtest/gtest-printers.h \
   googletest/googletest/include/gtest/internal/gtest-internal.h \
   /usr/include/sys/wait.h \
@@ -327,15 +355,11 @@ googletest/googletest/include/gtest/gtest-param-test.h:
 
 /usr/include/bits/types/__sigval_t.h:
 
-/usr/include/bits/types/siginfo_t.h:
-
 /usr/include/c++/8/x86_64-redhat-linux/bits/cxxabi_tweaks.h:
 
 /usr/include/bits/signum-generic.h:
 
 /usr/include/sys/wait.h:
-
-/usr/include/c++/8/functional:
 
 /usr/include/c++/8/cxxabi.h:
 
@@ -343,13 +367,9 @@ googletest/googletest/include/gtest/gtest-param-test.h:
 
 /usr/include/regex.h:
 
-/usr/include/bits/getopt_core.h:
-
 /usr/include/c++/8/condition_variable:
 
 /usr/include/bits/types/struct_statx.h:
-
-/usr/include/bits/statx-generic.h:
 
 /usr/include/bits/types/sigval_t.h:
 
@@ -357,15 +377,9 @@ googletest/googletest/include/gtest/gtest-param-test.h:
 
 /usr/include/asm/posix_types_64.h:
 
-/usr/include/c++/8/bits/std_function.h:
-
-/usr/include/asm/posix_types.h:
-
 /usr/include/c++/8/mutex:
 
 /usr/include/asm-generic/types.h:
-
-/usr/include/asm/types.h:
 
 /usr/include/c++/8/bits/locale_facets_nonio.tcc:
 
@@ -391,17 +405,87 @@ googletest/googletest/include/gtest/gtest-message.h:
 
 googletest/googletest/include/gtest/gtest-assertion-result.h:
 
-/usr/include/bits/environments.h:
-
-/usr/include/c++/8/bits/sstream.tcc:
-
-/usr/include/c++/8/istream:
-
 /usr/include/c++/8/bits/stl_multiset.h:
 
 /usr/include/c++/8/bits/stl_tree.h:
 
 /usr/include/c++/8/set:
+
+/usr/include/c++/8/bits/atomic_lockfree_defines.h:
+
+/usr/include/c++/8/bits/allocated_ptr.h:
+
+/usr/include/c++/8/bits/shared_ptr_base.h:
+
+/usr/include/c++/8/bits/unique_ptr.h:
+
+/usr/include/c++/8/ext/concurrence.h:
+
+/usr/include/assert.h:
+
+/usr/include/c++/8/bits/stl_set.h:
+
+/usr/include/c++/8/bits/stl_tempbuf.h:
+
+googletest/googletest/include/gtest/internal/gtest-internal.h:
+
+/usr/include/c++/8/memory:
+
+/usr/include/c++/8/limits:
+
+/usr/include/c++/8/cstddef:
+
+googletest/googletest/include/gtest/gtest.h:
+
+/usr/include/asm/posix_types.h:
+
+/usr/include/c++/8/bits/std_function.h:
+
+/usr/include/c++/8/functional:
+
+/usr/include/c++/8/bits/unordered_set.h:
+
+/home/csmajs/jmont229/cs170/CS170-Project1/src/Algorithm.cpp:
+
+/usr/include/bits/environments.h:
+
+/usr/include/c++/8/bits/sstream.tcc:
+
+/usr/include/c++/8/bits/stl_heap.h:
+
+/usr/include/c++/8/bits/stl_deque.h:
+
+/usr/include/bits/statx-generic.h:
+
+/usr/include/c++/8/deque:
+
+/home/csmajs/jmont229/cs170/CS170-Project1/headers/Algorithm.h:
+
+/usr/include/bits/iscanonical.h:
+
+/usr/include/bits/mathcalls-narrow.h:
+
+/usr/include/bits/mathcalls.h:
+
+/usr/include/asm/types.h:
+
+/usr/include/bits/mathcalls-helper-functions.h:
+
+/usr/include/bits/getopt_core.h:
+
+/usr/include/bits/fp-fast.h:
+
+/usr/include/bits/types/siginfo_t.h:
+
+/usr/include/bits/fp-logb.h:
+
+/usr/include/bits/flt-eval-method.h:
+
+/usr/include/bits/math-vector.h:
+
+/usr/include/math.h:
+
+/usr/include/c++/8/istream:
 
 /usr/include/c++/8/bits/ostream.tcc:
 
@@ -433,22 +517,6 @@ googletest/googletest/include/gtest/gtest-assertion-result.h:
 
 /usr/include/c++/8/bits/locale_classes.tcc:
 
-/usr/include/c++/8/bits/atomic_lockfree_defines.h:
-
-/usr/include/c++/8/bits/allocated_ptr.h:
-
-/usr/include/c++/8/bits/shared_ptr_base.h:
-
-/usr/include/c++/8/bits/unique_ptr.h:
-
-/usr/include/c++/8/ext/concurrence.h:
-
-/usr/include/assert.h:
-
-/usr/include/c++/8/bits/stl_set.h:
-
-/usr/include/c++/8/bits/stl_tempbuf.h:
-
 /usr/include/stdlib.h:
 
 /usr/include/c++/8/ext/aligned_buffer.h:
@@ -467,19 +535,7 @@ googletest/googletest/include/gtest/internal/gtest-death-test-internal.h:
 
 /usr/include/bits/stdlib-float.h:
 
-/usr/include/c++/8/iterator:
-
-/usr/include/c++/8/ios:
-
-/usr/include/bits/floatn.h:
-
 /usr/include/c++/8/bits/char_traits.h:
-
-/usr/include/bits/siginfo-consts.h:
-
-/usr/include/c++/8/ostream:
-
-/usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h:
 
 /usr/include/asm-generic/bitsperlong.h:
 
@@ -519,10 +575,6 @@ googletest/googletest/include/gtest/internal/gtest-type-util.h:
 
 /usr/include/c++/8/bits/alloc_traits.h:
 
-/usr/include/c++/8/iostream:
-
-/usr/include/c++/8/x86_64-redhat-linux/bits/os_defines.h:
-
 /usr/include/c++/8/ext/alloc_traits.h:
 
 /usr/include/bits/waitstatus.h:
@@ -544,6 +596,10 @@ googletest/googletest/include/gtest/internal/custom/gtest-port.h:
 /usr/include/unistd.h:
 
 /usr/include/linux/types.h:
+
+/usr/include/c++/8/bits/stl_queue.h:
+
+/usr/include/c++/8/bits/deque.tcc:
 
 /usr/include/c++/8/bits/vector.tcc:
 
@@ -593,8 +649,6 @@ googletest/googletest/include/gtest/gtest-test-part.h:
 
 /usr/include/c++/8/bits/basic_string.tcc:
 
-/usr/include/c++/8/limits:
-
 /usr/include/bits/types/struct_timeval.h:
 
 /usr/include/c++/8/bits/ios_base.h:
@@ -643,9 +697,9 @@ test.cpp:
 
 googletest/googletest/include/gtest/gtest_pred_impl.h:
 
-/usr/include/bits/types/__fpos64_t.h:
+/usr/include/c++/8/queue:
 
-/usr/include/c++/8/cstddef:
+/usr/include/bits/types/__fpos64_t.h:
 
 /home/csmajs/jmont229/cs170/CS170-Project1/headers/Problem.h:
 
@@ -654,6 +708,8 @@ googletest/googletest/include/gtest/gtest_pred_impl.h:
 /usr/include/bits/types/__fpos_t.h:
 
 googletest/googletest/include/gtest/gtest-typed-test.h:
+
+/usr/include/c++/8/cmath:
 
 /usr/include/c++/8/bits/basic_ios.h:
 
@@ -693,6 +749,12 @@ googletest/googletest/include/gtest/gtest-typed-test.h:
 
 /usr/include/c++/8/bits/stringfwd.h:
 
+/usr/include/c++/8/iterator:
+
+/usr/include/bits/floatn.h:
+
+/usr/include/c++/8/ios:
+
 /usr/include/stdint.h:
 
 /usr/include/c++/8/backward/binders.h:
@@ -708,6 +770,8 @@ googletest/googletest/include/gtest/gtest-typed-test.h:
 /usr/include/c++/8/x86_64-redhat-linux/bits/atomic_word.h:
 
 /usr/include/c++/8/bits/stl_iterator_base_types.h:
+
+/usr/include/c++/8/unordered_set:
 
 /usr/include/c++/8/bits/stl_iterator.h:
 
@@ -725,7 +789,11 @@ googletest/googletest/include/gtest/gtest-death-test.h:
 
 /usr/include/bits/types/locale_t.h:
 
-googletest/googletest/include/gtest/gtest.h:
+/usr/include/bits/siginfo-consts.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h:
+
+/usr/include/c++/8/ostream:
 
 /usr/lib/gcc/x86_64-redhat-linux/8/include/stdarg.h:
 
@@ -767,7 +835,11 @@ googletest/googletest/include/gtest/internal/gtest-port.h:
 
 /usr/include/c++/8/bits/uses_allocator.h:
 
+/home/csmajs/jmont229/cs170/CS170-Project1/src/Node.cpp:
+
 /usr/include/endian.h:
+
+/usr/include/bits/libm-simd-decl-stubs.h:
 
 /usr/include/c++/8/bits/stl_construct.h:
 
@@ -828,6 +900,10 @@ googletest/googletest/include/gtest/internal/gtest-filepath.h:
 /usr/include/c++/8/bits/functexcept.h:
 
 /usr/include/bits/timex.h:
+
+/usr/include/c++/8/x86_64-redhat-linux/bits/os_defines.h:
+
+/usr/include/c++/8/iostream:
 
 /usr/include/bits/types/clockid_t.h:
 
@@ -915,6 +991,4 @@ googletest/googletest/include/gtest/internal/custom/gtest-printers.h:
 
 /usr/include/c++/8/bits/unordered_map.h:
 
-googletest/googletest/include/gtest/internal/gtest-internal.h:
-
-/usr/include/c++/8/memory:
+/home/csmajs/jmont229/cs170/CS170-Project1/headers/Node.h:

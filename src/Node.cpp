@@ -73,7 +73,8 @@ void Node::printState() const {
     // Print the current board configuration
     for (int i = 0; i < 9; ++i) {
         if (i % 3 == 0 && i > 0) cout << '\n';
-        cout << (this->state.GetValueAtIndex(i) == 0 ? 'b' : '0' + this->state.GetValueAtIndex(i)) << ' ';
+        //cout << (this->state.GetValueAtIndex(i) == 0 ? 'b' : '0' + this->state.GetValueAtIndex(i)) << ' ';
+        cout <<  this->state.GetValueAtIndex(i) << ' ';
     }
     cout << '\n';
 }

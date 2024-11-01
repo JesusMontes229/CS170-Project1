@@ -80,6 +80,7 @@ Problem Problem::Shift(ShiftDirection _direction) const
         int BlankHolder = NewBoard.Board.at(NewBoard.BlankSlateIndex);
         NewBoard.Board.at(NewBoard.BlankSlateIndex) = NewBoard.Board.at(NewBoard.BlankSlateIndex + i);
         NewBoard.Board.at(NewBoard.BlankSlateIndex + i) = BlankHolder;
+        NewBoard.BlankSlateIndex = NewBoard.BlankSlateIndex + i;
         
     }
     else{

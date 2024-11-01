@@ -1,7 +1,16 @@
 #include "../headers/Problem.h"
 #include "../src/Problem.cpp"
+#include "../headers/Node.h"
+#include "../src/Node.cpp"
+#include "../headers/Algorithm.h"
+#include "../src/Algorithm.cpp"
 #include "gtest/gtest.h"
 #include <string>
+
+int h(const Problem& t)
+{
+    return 1;
+}
 
 TEST(CONSTRUCTOR, to_big_element)
 {
@@ -323,5 +332,29 @@ TEST(PROBLEM_EQ, equal)
     delete[] arr2;
 }
 
+TEST(ASTAR_SEARCH, test1)
+{
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 0; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 3; 
+    arr1[6] = 7;  arr1[7] = 8; arr1[8] = 6;
+    Problem TestBoard1(arr1, size);
+    ASSERT_TRUE(A_STAR_SEARCH(TestBoard1, h) != nullptr);  
+    ASSERT_TRUE(A_STAR_SEARCH(TestBoard1, h)->getState().isGoal());  
+    delete[] arr1;
+}
+TEST(ASTAR_SEARCH, test2)
+{
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 8;  arr1[1] = 7; arr1[2] = 1; 
+    arr1[3] = 6;  arr1[4] = 0; arr1[5] = 2; 
+    arr1[6] = 5;  arr1[7] = 4; arr1[8] = 3;
+    Problem TestBoard1(arr1, size);
+    ASSERT_TRUE(A_STAR_SEARCH(TestBoard1, h) != nullptr);  
+    ASSERT_TRUE(A_STAR_SEARCH(TestBoard1, h)->getState().isGoal());  
+    delete[] arr1;
+}
 
 int main(int argc, char **argv) { ::testing::InitGoogleTest(&argc, argv); return RUN_ALL_TESTS();}

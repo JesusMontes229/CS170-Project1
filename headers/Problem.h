@@ -14,11 +14,10 @@ class Problem{
     bool CanShift(ShiftDirection) const;
     Problem Shift(ShiftDirection) const;
     int GetIndex(int);
-    int GetValueAtIndex(int);
+    int GetValueAtIndex(int) const;
     int getSize() const;
     bool isGoal() const; 
     bool isSolvable() const; 
-    int GetValueAtIndex(int) const;
     bool operator==(const Problem& RHS) const;
         
 

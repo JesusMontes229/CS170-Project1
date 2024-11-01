@@ -1,4 +1,4 @@
-#include "AStarMisplacedTile.h"
+#include "../headers/AstarMisplacedTile.h"
 #include "Node.h"
 #include <vector>  //added for the openList
 #include <unordered_set>  //added for the closedList

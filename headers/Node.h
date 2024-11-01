@@ -23,7 +23,7 @@ private:
 
 public:
     //initializing everyrhting to nothing (constructor, intial state)
-    Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost, int depth = 0);
+    Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost = 0, int depth = 0);
     Node();
 
     //bool operators 
