@@ -4,6 +4,11 @@
 #include "../src/Node.cpp"
 #include "../headers/Algorithm.h"
 #include "../src/Algorithm.cpp"
+#include "../headers/AStarSearch.h"
+#include "../src/AStarSearch.cpp"
+#include "../headers/UniformCost.h"
+#include "../src/UniformCost.cpp"
+
 #include "gtest/gtest.h"
 #include <string>
 
@@ -455,6 +460,57 @@ TEST(ASTAR_SEARCH, testMisplacedTile3) {
     delete[] arr1;
     delete result; 
 }
+
+//TESTING UNIFORM COST 
+TEST(UNIFORM_COST_SEARCH, TestReachGoal)
+{
+    int size = 9;
+    int* initialArr = new int[size];
+    initialArr[0] = 1; initialArr[1] = 2; initialArr[2] = 3; 
+    initialArr[3] = 0; initialArr[4] = 4; initialArr[5] = 5; 
+    initialArr[6] = 6; initialArr[7] = 7; initialArr[8] = 8;
+
+    Problem initialProblem(initialArr, size);
+    Node* result = uniformCostSearch(initialProblem);
+    ASSERT_NE(result, nullptr); 
+    ASSERT_TRUE(result->getState().isGoal()); 
+    delete[] initialArr;
+    delete result;
+}
+
+TEST(UNIFORM_COST_SEARCH, TestNoSolution)
+{
+    int size = 9;
+    int* initialArr = new int[size];
+    initialArr[0] = 1; initialArr[1] = 2; initialArr[2] = 3; 
+    initialArr[3] = 4; initialArr[4] = 5; initialArr[5] = 6; 
+    initialArr[6] = 7; initialArr[7] = 8; initialArr[8] = 0;
+
+    Problem initialProblem(initialArr, size);
+    initialProblem.setState({1, 2, 3, 4, 5, 6, 7, 8, 0});
+    Node* result = uniformCostSearch(initialProblem);
+    ASSERT_EQ(result, nullptr);
+    delete[] initialArr;
+    delete result;
+}
+
+TEST(UNIFORM_COST_SEARCH, TestMultiplePaths)
+{
+    int size = 9;
+    int* initialArr = new int[size];
+    initialArr[0] = 0; initialArr[1] = 2; initialArr[2] = 3; 
+    initialArr[3] = 1; initialArr[4] = 4; initialArr[5] = 5; 
+    initialArr[6] = 6; initialArr[7] = 7; initialArr[8] = 8;
+
+    Problem initialProblem(initialArr, size);
+    Node* result = uniformCostSearch(initialProblem);
+
+    ASSERT_NE(result, nullptr);
+    ASSERT_TRUE(result->getState().isGoal()); 
+    delete[] initialArr;
+    delete result;
+}
+
 
 
 int main(int argc, char **argv) { ::testing::InitGoogleTest(&argc, argv); return RUN_ALL_TESTS();}
