@@ -7,14 +7,13 @@
 
 using namespace std;
 
-enum ShiftDirection { NONE, LEFT, UP, RIGHT, DOWN };
 
 class Node {
 private:
     Problem state;
     Node* parent;
     int g_cost;
-    int h_cost;x
+    int h_cost;
     int depth;
     //to help keep track of the move direction from current state to parent state
     ShiftDirection move;
@@ -24,7 +23,8 @@ private:
 
 public:
     //initializing everyrhting to nothing (constructor, intial state)
-    Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost = 0, ShiftDirection move = ShiftDirection::NONE);
+    Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost = 0);
+    Node();
 
     //bool operators 
     bool operator()(const Node*, const Node*);
@@ -50,7 +50,7 @@ public:
     void printState() const;
     //create and return all child nodes from current node states
     //for A* and Uniform Cost Search
-    vector<Node*> generateChildren() const;
+    const vector<Node*> generateChildren();
 };
 
 #endif // NODE_H

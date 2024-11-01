@@ -4,6 +4,7 @@
 Problem::Problem(const int *Array, const int size)
 {
     BlankSlateIndex = 0;
+    this->size = size;
     Board.resize(size);
     std::unordered_map < int, int> testMap;
 
@@ -21,7 +22,7 @@ Problem::Problem(const int *Array, const int size)
         Board.at(i) = Array[i];
     }
 }
-bool Problem::CanShift(ShiftDirection _direction)
+bool Problem::CanShift(ShiftDirection _direction) const
 {
     int shiftcase1, shiftcase2, shiftcase3;
     shiftcase1 = 0;
@@ -54,7 +55,7 @@ bool Problem::CanShift(ShiftDirection _direction)
     if(BlankSlateIndex == shiftcase1 || BlankSlateIndex == shiftcase2 || BlankSlateIndex == shiftcase3){return false;}
     return true;
 }
-Problem Problem::Shift(ShiftDirection _direction)
+Problem Problem::Shift(ShiftDirection _direction) const
 {
     Problem NewBoard = *this;
     if(NewBoard.CanShift(_direction))
@@ -99,7 +100,7 @@ int Problem::GetIndex(int Value)
     return 0;
     
 }
-int Problem::GetValueAtIndex(int Index)
+int Problem::GetValueAtIndex(int Index) const
 {
     return Board.at(Index);
 }
@@ -121,4 +122,18 @@ bool Problem::isSolvable() const {
         }
     }
     return inversions % 2 == 0;
+Problem::Problem()
+{
+
+}
+bool Problem::operator==(const Problem& RHS)
+{
+    for(int i = 0; i < this->size; ++i)
+    {
+        if(this->Board.at(i) != RHS.Board.at(i))
+        {
+            return false;
+        }
+    }
+    return true;
 }

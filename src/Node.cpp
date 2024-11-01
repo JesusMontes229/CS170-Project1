@@ -1,21 +1,24 @@
-#include "Node.h"
+#include "../headers/Node.h"
 #include <cmath>
 
-Node::Node(const Problem& state, Node* parent, int g_cost, int h_cost, ShiftDirection move)
+Node::Node(const Problem& state, Node* parent, int g_cost, int h_cost)
     : state(state), parent(parent), g_cost(g_cost), h_cost(h_cost), move(move) {
-    depth = parent;
+    //depth = parent;
     if (parent) {
         depth = parent->depth + 1; // Calculate depth based on the parent
     }
 }
+Node::Node()
+{
+    
+}
 
-/*bool Node::operator()(const Node* RHS, const Node* LHS){
-    return (RHS->heuristicCost + RHS->edgeCost) < (LHS->heuristicCost + LHS->edgeCost);
+bool Node::operator()(const Node* RHS, const Node* LHS){
+    return (RHS->h_cost + RHS->g_cost) < (LHS->h_cost + LHS->g_cost);
 }
 bool Node::operator==(const Node* RHS){
-    return (this->CurrentState == RHS->CurrentState);
+    return (this->state == RHS->state);
 }
-*/
 
 //getters 
 int Node::getTotalCost() const {
@@ -75,18 +78,17 @@ void Node::printState() const {
     // Print the current board configuration
     for (int i = 0; i < 9; ++i) {
         if (i % 3 == 0 && i > 0) cout << '\n';
-        cout << (state.GetValueAtIndex(i) == 0 ? 'b' : '0' + state.GetValueAtIndex(i)) << ' ';
+        cout << (this->state.GetValueAtIndex(i) == 0 ? 'b' : '0' + this->state.GetValueAtIndex(i)) << ' ';
     }
     cout << '\n';
 }
 
 //gets the all the children nodes from the current Node and stores them into a vector 
-vector<Node*> Node::generateChildren() const {
-    vector<Node> children;
+const vector<Node*> Node::generateChildren() {
+    vector<Node*> children;
     for (ShiftDirection dir : {LEFT, UP, RIGHT, DOWN}) {
         if (state.CanShift(dir)) {
-            Problem newState = state.Shift(dir);
-            Node* child = new Node(newState, this, g_cost + 1, calculateHeuristic(newState), dir);
+            Node* child = new Node(state.Shift(dir),this, g_cost + 1,this->calculateHeuristic(state.Shift(dir)));
             children.push_back(child);
         }
     }

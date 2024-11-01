@@ -7,15 +7,18 @@ class Problem{
     std::vector<int> Board;
     int BlankSlateIndex;
 
+    int size;
     public:
     Problem(const int *Array, const int size);
-    bool CanShift(ShiftDirection);
-    Problem Shift(ShiftDirection);
+    Problem();
+    bool CanShift(ShiftDirection) const;
+    Problem Shift(ShiftDirection) const;
     int GetIndex(int);
     int GetValueAtIndex(int);
     bool isGoal() const; 
     bool isSolvable() const; 
-    
+    int GetValueAtIndex(int) const;
+    bool operator==(const Problem& RHS);
         
 
 };
