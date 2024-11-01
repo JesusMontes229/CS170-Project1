@@ -215,6 +215,10 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   /home/csmajs/jmont229/cs170/CS170-Project1/headers/Algorithm.h \
   /usr/include/c++/8/unordered_set \
   /usr/include/c++/8/bits/unordered_set.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/HeuristicFunc.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Algorithm.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/src/HeuristicFunc.cpp \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/HeuristicFunc.h \
   googletest/googletest/include/gtest/gtest.h \
   /usr/include/c++/8/cstddef \
   /usr/include/c++/8/limits \
@@ -427,12 +431,6 @@ googletest/googletest/include/gtest/gtest-assertion-result.h:
 
 /usr/include/c++/8/ext/concurrence.h:
 
-/usr/include/assert.h:
-
-/usr/include/c++/8/bits/stl_set.h:
-
-/usr/include/c++/8/bits/stl_tempbuf.h:
-
 googletest/googletest/include/gtest/internal/gtest-internal.h:
 
 /usr/include/c++/8/memory:
@@ -442,6 +440,14 @@ googletest/googletest/include/gtest/internal/gtest-internal.h:
 /usr/include/c++/8/cstddef:
 
 googletest/googletest/include/gtest/gtest.h:
+
+/usr/include/assert.h:
+
+/usr/include/c++/8/bits/stl_set.h:
+
+/usr/include/c++/8/bits/stl_tempbuf.h:
+
+/home/csmajs/jmont229/cs170/CS170-Project1/headers/HeuristicFunc.h:
 
 /usr/include/c++/8/bits/unordered_set.h:
 
@@ -492,6 +498,8 @@ googletest/googletest/include/gtest/gtest.h:
 /usr/include/c++/8/bits/basic_ios.tcc:
 
 /usr/include/bits/types/stack_t.h:
+
+/home/csmajs/jmont229/cs170/CS170-Project1/src/HeuristicFunc.cpp:
 
 /usr/include/c++/8/x86_64-redhat-linux/bits/ctype_inline.h:
 

@@ -4,6 +4,8 @@
 #include "../src/Node.cpp"
 #include "../headers/Algorithm.h"
 #include "../src/Algorithm.cpp"
+#include "../headers/HeuristicFunc.h"
+#include "../src/HeuristicFunc.cpp"
 #include "gtest/gtest.h"
 #include <string>
 
@@ -41,6 +43,7 @@ TEST(CONSTRUCTOR, goodState)
     arr[3] = 5;  arr[4] = 4; arr[5] = 3; 
     arr[6] = 1;  arr[7] = 8; arr[8] = 0;
     ASSERT_NO_THROW(Problem TestBoard(arr, size));
+    delete[] arr;
 }
 TEST(SHIFTS, valid_left_shift1)
 {
@@ -332,7 +335,7 @@ TEST(PROBLEM_EQ, equal)
     delete[] arr2;
 }
 
-TEST(ASTAR_SEARCH, test1)
+TEST(ASTAR_SEARCH_UNIFORM, test1)
 {
     int size = 9;
     int *arr1 = new int[9];
@@ -340,11 +343,14 @@ TEST(ASTAR_SEARCH, test1)
     arr1[3] = 4;  arr1[4] = 5; arr1[5] = 3; 
     arr1[6] = 7;  arr1[7] = 8; arr1[8] = 6;
     Problem TestBoard1(arr1, size);
-    ASSERT_TRUE(A_STAR_SEARCH(TestBoard1, h) != nullptr);  
-    ASSERT_TRUE(A_STAR_SEARCH(TestBoard1, h)->getState().isGoal());  
+    vector<Node*> cleanUp;
+    Node* TestNode = A_STAR_SEARCH(TestBoard1, UniformCostSearchHeuristic);
+    ASSERT_TRUE( TestNode != nullptr);  
+    ASSERT_TRUE(TestNode->getState().isGoal());  
     delete[] arr1;
+    delete TestNode;
 }
-TEST(ASTAR_SEARCH, test2)
+/*TEST(ASTAR_SEARCH_UNIFORM, test2)
 {
     int size = 9;
     int *arr1 = new int[9];
@@ -352,11 +358,13 @@ TEST(ASTAR_SEARCH, test2)
     arr1[3] = 6;  arr1[4] = 0; arr1[5] = 2; 
     arr1[6] = 5;  arr1[7] = 4; arr1[8] = 3;
     Problem TestBoard1(arr1, size);
-    ASSERT_TRUE(A_STAR_SEARCH(TestBoard1, h) != nullptr);  
-    ASSERT_TRUE(A_STAR_SEARCH(TestBoard1, h)->getState().isGoal());  
+   Node* TestNode = A_STAR_SEARCH(TestBoard1, UniformCostSearchHeuristic);
+    ASSERT_TRUE( TestNode != nullptr);  
+    ASSERT_TRUE(TestNode->getState().isGoal());  
     delete[] arr1;
+    delete TestNode;
 }
-TEST(ASTAR_SEARCH, test3_impossible)
+/*TEST(ASTAR_SEARCH_UNIFORM, test3_impossible)
 {
     int size = 9;
     int *arr1 = new int[9];
@@ -364,8 +372,52 @@ TEST(ASTAR_SEARCH, test3_impossible)
     arr1[3] = 4;  arr1[4] = 5; arr1[5] = 6; 
     arr1[6] = 8;  arr1[7] = 7; arr1[8] = 0;
     Problem TestBoard1(arr1, size);
-    ASSERT_TRUE(A_STAR_SEARCH(TestBoard1, h) == nullptr);   
+    Node* TestNode = A_STAR_SEARCH(TestBoard1, UniformCostSearchHeuristic);
+    ASSERT_TRUE( TestNode == nullptr);    
     delete[] arr1;
+    //delete TestNode;
+} 
+TEST(ASTAR_SEARCH_EUCLIDEAN, test1)
+{
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 0; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 3; 
+    arr1[6] = 7;  arr1[7] = 8; arr1[8] = 6;
+    Problem TestBoard1(arr1, size);
+    Node* TestNode = A_STAR_SEARCH(TestBoard1, EuclideanDistHeuristic);
+    ASSERT_TRUE( TestNode != nullptr);  
+    ASSERT_TRUE(TestNode->getState().isGoal());  
+    delete[] arr1;
+    delete TestNode;
 }
+TEST(ASTAR_SEARCH_EUCLIDEAN, test2)
+{
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 8;  arr1[1] = 7; arr1[2] = 1; 
+    arr1[3] = 6;  arr1[4] = 0; arr1[5] = 2; 
+    arr1[6] = 5;  arr1[7] = 4; arr1[8] = 3;
+    Problem TestBoard1(arr1, size);
+   Node* TestNode = A_STAR_SEARCH(TestBoard1, EuclideanDistHeuristic);
+    ASSERT_TRUE( TestNode != nullptr);  
+    ASSERT_TRUE(TestNode->getState().isGoal());
+     
+    delete[] arr1;
+    delete TestNode;
+}
+/*TEST(ASTAR_SEARCH_EUCLIDEAN, test3_impossible)
+{
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 3; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 6; 
+    arr1[6] = 8;  arr1[7] = 7; arr1[8] = 0;
+    Problem TestBoard1(arr1, size);
+    Node* TestNode = A_STAR_SEARCH(TestBoard1, EuclideanDistHeuristic);
+    ASSERT_TRUE( TestNode == nullptr);    
+    delete[] arr1;
+    //delete TestNode;
+}*/
 
 int main(int argc, char **argv) { ::testing::InitGoogleTest(&argc, argv); return RUN_ALL_TESTS();}

@@ -14,6 +14,10 @@ bool Node::operator()(const Node* RHS, const Node* LHS){
 bool Node::operator==(const Node* RHS){
     return (this->state == RHS->state);
 }
+bool Node::operator<(const Node* RHS)
+{
+    return this->getTotalCost() < RHS->getTotalCost();
+}
 
 //getters 
 int Node::getTotalCost() const {
@@ -80,12 +84,13 @@ void Node::printState() const {
 }
 //gets the all the children nodes from the current Node and stores them into a vector 
 const vector<Node*> Node::generateChildren(int (*heuristicfunc)(const Problem &)) {
-    vector<Node*> children;
+    vector<Node*> children; 
+    Node* child = nullptr;
     for (ShiftDirection dir : {LEFT, UP, RIGHT, DOWN}) {
         if (state.CanShift(dir)) {
-            Node* child = new Node(state.Shift(dir), this, g_cost + 1,heuristicfunc(state.Shift(dir)), depth + 1);
-            children.push_back(child);
+            children.push_back(new Node(state.Shift(dir), this, this->g_cost + 1 ,heuristicfunc(state.Shift(dir)), this->depth + 1));
         }
+        child = nullptr;
     }
     return children;
 }

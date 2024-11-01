@@ -146,6 +146,10 @@ CMakeFiles/runAllTests.dir/test.cpp.o: \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/../src/Algorithm.cpp \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/../src/../headers/Algorithm.h \
  /usr/include/c++/8/unordered_set /usr/include/c++/8/bits/unordered_set.h \
+ /home/csmajs/jmont229/cs170/CS170-Project1/test/../headers/HeuristicFunc.h \
+ /home/csmajs/jmont229/cs170/CS170-Project1/test/../headers/Algorithm.h \
+ /home/csmajs/jmont229/cs170/CS170-Project1/test/../src/HeuristicFunc.cpp \
+ /home/csmajs/jmont229/cs170/CS170-Project1/test/../src/../headers/HeuristicFunc.h \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/googletest/googletest/include/gtest/gtest.h \
  /usr/include/c++/8/cstddef /usr/include/c++/8/limits \
  /usr/include/c++/8/memory /usr/include/c++/8/bits/stl_tempbuf.h \

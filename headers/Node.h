@@ -29,6 +29,7 @@ public:
     //bool operators 
     bool operator()(const Node*, const Node*);
     bool operator==(const Node* );
+    bool operator<(const Node*);
 
     //getters
     int getTotalCost() const;

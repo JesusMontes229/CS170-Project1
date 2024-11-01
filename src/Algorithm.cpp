@@ -21,11 +21,10 @@ bool hasProblemBeenVisited(const unordered_multiset<Problem, HashProblem>& viste
 
 }
 
-
 Node* A_STAR_SEARCH(const Problem& initial, int (*heuristicfunc)(const Problem&))
 {
     Node* current = new Node(initial, nullptr, 0, heuristicfunc(initial), 0);
-    std::priority_queue<Node* , std::vector<Node*>> searchSpace;
+    std::priority_queue<Node* , std::vector<Node*>, std::greater<Node*> > searchSpace;
     unordered_multiset<Problem, HashProblem> checkedSpace;
 
     searchSpace.push(current);
@@ -36,19 +35,25 @@ Node* A_STAR_SEARCH(const Problem& initial, int (*heuristicfunc)(const Problem&)
         searchSpace.pop();
         if(current->getState().isGoal())
         {
+            current->printState();
+            cout << endl;
+            cout << current->getHCost() << endl;
+            cout << current->getGCost() << endl;
+            cout << current->getDepth() << endl;
             return current;
         }
-        //current->printState();
-        //cout << endl;
-        vector<Node*> expandedChildren = current->generateChildren(heuristicfunc);
+        vector<Node*> expandedChildren;
+        expandedChildren = current->generateChildren(heuristicfunc);
         for(int i = 0; i < expandedChildren.size(); ++i)
         {
             if(!hasProblemBeenVisited(checkedSpace, expandedChildren.at(i)->getState()))
             {
-                searchSpace.push(expandedChildren.at(i));
+                searchSpace.emplace(expandedChildren.at(i));
+                expandedChildren.at(i) = nullptr;
+                
             }
         }
-        checkedSpace.insert(current->getState());
+        checkedSpace.emplace(current->getState());
     }
     return nullptr;
 }
