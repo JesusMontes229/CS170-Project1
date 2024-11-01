@@ -368,4 +368,93 @@ TEST(ASTAR_SEARCH, test3_impossible)
     delete[] arr1;
 }
 
+//TESTING EUCLIDEAN HEURISTIC
+TEST(ASTAR_SEARCH, testEuclideanDistance1) {
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 0; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 3; 
+    arr1[6] = 7;  arr1[7] = 8; arr1[8] = 6;
+    
+    Problem TestBoard1(arr1, size);
+    Node* result = A_STAR_SEARCH(TestBoard1, euclideanDistance);
+    ASSERT_TRUE(result != nullptr);
+    ASSERT_TRUE(result->getState().isGoal());
+    delete[] arr1;
+    delete result; 
+}
+
+TEST(ASTAR_SEARCH, testEuclideanDistance2) {
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 8;  arr1[1] = 7; arr1[2] = 1; 
+    arr1[3] = 6;  arr1[4] = 0; arr1[5] = 2; 
+    arr1[6] = 5;  arr1[7] = 4; arr1[8] = 3; 
+    Problem TestBoard1(arr1, size);
+    Node* result = A_STAR_SEARCH(TestBoard1, euclideanDistance);
+    ASSERT_TRUE(result != nullptr);
+    ASSERT_TRUE(result->getState().isGoal());
+    delete[] arr1;
+    delete result; 
+}
+
+TEST(ASTAR_SEARCH, testEuclideanDistance3) {
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 3; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 6; 
+    arr1[6] = 8;  arr1[7] = 7; arr1[8] = 0;
+    Problem TestBoard1(arr1, size);
+    Node* result = A_STAR_SEARCH(TestBoard1, euclideanDistance);
+    ASSERT_TRUE(result != nullptr);
+    ASSERT_TRUE(result->getState().isGoal());
+    delete[] arr1;
+    delete result; 
+}
+
+//TESTING MISPLACED TILE HEURISTIC
+TEST(ASTAR_SEARCH, testMisplacedTile1) {
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 0; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 3; 
+    arr1[6] = 7;  arr1[7] = 8; arr1[8] = 6;
+    
+    Problem TestBoard1(arr1, size);
+    Node* result = A_STAR_SEARCH(TestBoard1, misplacedTileHeuristic);
+    ASSERT_TRUE(result != nullptr);
+    ASSERT_TRUE(result->getState().isGoal());
+    delete[] arr1;
+    delete result; 
+}
+
+TEST(ASTAR_SEARCH, testMisplacedTile2) {
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 8;  arr1[1] = 7; arr1[2] = 1; 
+    arr1[3] = 6;  arr1[4] = 0; arr1[5] = 2; 
+    arr1[6] = 5;  arr1[7] = 4; arr1[8] = 3; 
+    Problem TestBoard1(arr1, size);
+    Node* result = A_STAR_SEARCH(TestBoard1, misplacedTileHeuristic);
+    ASSERT_TRUE(result != nullptr);
+    ASSERT_TRUE(result->getState().isGoal());
+    delete[] arr1;
+    delete result; 
+}
+
+TEST(ASTAR_SEARCH, testMisplacedTile3) {
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 3; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 6; 
+    arr1[6] = 8;  arr1[7] = 7; arr1[8] = 0;
+    Problem TestBoard1(arr1, size);
+    Node* result = A_STAR_SEARCH(TestBoard1, misplacedTileHeuristic);
+    ASSERT_TRUE(result != nullptr);
+    ASSERT_TRUE(result->getState().isGoal());
+    delete[] arr1;
+    delete result; 
+}
+
+
 int main(int argc, char **argv) { ::testing::InitGoogleTest(&argc, argv); return RUN_ALL_TESTS();}
