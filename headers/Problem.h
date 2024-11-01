@@ -1,7 +1,7 @@
 #ifndef PROBLEM_H
 #define PROBLEM_H
 #include <vector>
-enum ShiftDirection {LEFT, UP, RIGHT, DOWN};
+enum ShiftDirection {NONE, LEFT, UP, RIGHT, DOWN};
 class Problem{
     private:
     std::vector<int> Board;
@@ -15,6 +15,7 @@ class Problem{
     Problem Shift(ShiftDirection) const;
     int GetIndex(int);
     int GetValueAtIndex(int);
+    int getSize() const;
     bool isGoal() const; 
     bool isSolvable() const; 
     int GetValueAtIndex(int) const;

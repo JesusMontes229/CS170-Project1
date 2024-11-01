@@ -122,6 +122,7 @@ bool Problem::isSolvable() const {
         }
     }
     return inversions % 2 == 0;
+}
 Problem::Problem()
 {
 
@@ -136,4 +137,8 @@ bool Problem::operator==(const Problem& RHS)
         }
     }
     return true;
+}
+int Problem::getSize() const
+{
+    return size;
 }

@@ -1,11 +1,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "AStarMisplacedTile.h" // all three searches
-#include "UniformCostSearch.h"
-#include "AstarEuclidean.h"
-#include "Problem.h" 
-#include "Node.h" 
+#include "../headers/Problem.h" 
+#include "../headers/Node.h" 
+#include "../headers/Algorithm.h"
+#include "../headers/AstarEuclidean.h"
+#include "../headers/AstarMisplacedTile.h"
+#include "../headers/UniformCostSearch.h"
+
 
 using namespace std;
 
@@ -70,7 +72,7 @@ int main() {
             break;
         }
         case 3: {
-            AstarEuclidean solver;
+            AStarEuclidean solver;
             resultNode = solver.solve(initialState);
             break;
         }
@@ -91,7 +93,7 @@ int main() {
         for (int i = path.size() - 1; i >= 0; --i) {
             Node* currentNode = path[i];
             int g_n = currentNode->getDepth(); // Cost to reach this node
-            int h_n = currentNode->calculateHeuristic(); // Heuristic value
+            //int h_n = currentNode->calculateHeuristic(); // Heuristic value
 
             // print the current state being expanded
             cout << "Expanding state:" << endl;
@@ -100,19 +102,19 @@ int main() {
             // print the best state to expand
             if (i > 0) { // ensure there's a next state to expand
                 Node* nextNode = path[i - 1];
-                cout << "The best state to expand with g(n) = " << g_n << " and h(n) = " << h_n << " is..." << endl;
+                //cout << "The best state to expand with g(n) = " << g_n << " and h(n) = " << h_n << " is..." << endl;
                 printPuzzle(nextNode->getState());
                 cout << "Expanding this node..." << endl;
             }
         }
 
-        cout << "Goal!!!" << endl;
+        /*cout << "Goal!!!" << endl;
         cout << "To solve this problem the search algorithm expanded a total of " 
              << resultNode->getExpandedNodes() << " nodes." << endl; // print total nodes expanded
         cout << "The maximum number of nodes in the queue at any one time: " 
              << resultNode->getMaxQueueSize() << "." << endl; // display maxQueueSize
         cout << "The depth of the goal node was " 
-             << resultNode->getDepth() << "." << endl; // depth of the goal node
+             << resultNode->getDepth() << "." << endl; // depth of the goal node*/
 
     } else {
         cout << "No solution found." << endl;

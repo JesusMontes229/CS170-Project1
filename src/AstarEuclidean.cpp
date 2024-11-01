@@ -1,7 +1,8 @@
-#include "AStarEuclidean.h"
+#include "../headers/AstarEuclidean.h"
 #include <queue>
 #include <unordered_set>
 #include <vector>
+#include <string>
 #include <iostream>
 
 struct CompareNodes {
@@ -13,8 +14,8 @@ struct CompareNodes {
 //converts the board state to a string
 string AStarEuclidean::getBoardString(const Problem& state) {
     string boardString;
-    for (int i = 0; i < state.Board.size(); i++) {
-        boardString += to_string(state.GetValueAtIndex(i)) + ",";
+    for (int i = 0; i < state.getSize(); i++) {
+        boardString = boardString + to_string(state.GetValueAtIndex(i)) + ",";
     }
     return boardString;
 }
@@ -24,7 +25,7 @@ Node* AStarEuclidean::solve(const Problem& initialState) {
     unordered_set<string> closedSet; 
 
     //initializing the first node
-    Node* startNode = new Node(initialState, nullptr, 0, calculateHeuristic(initialState), NONE);
+    Node* startNode = new Node(initialState, nullptr, 0, 0);
     openSet.push(startNode);
     updateMaxQueueSize(1);
 
