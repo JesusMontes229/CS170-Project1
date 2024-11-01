@@ -146,8 +146,6 @@ CMakeFiles/runAllTests.dir/test.cpp.o: \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/../src/Algorithm.cpp \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/../src/../headers/Algorithm.h \
  /usr/include/c++/8/unordered_set /usr/include/c++/8/bits/unordered_set.h \
- /usr/include/c++/8/functional /usr/include/c++/8/bits/refwrap.h \
- /usr/include/c++/8/bits/std_function.h \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/googletest/googletest/include/gtest/gtest.h \
  /usr/include/c++/8/cstddef /usr/include/c++/8/limits \
  /usr/include/c++/8/memory /usr/include/c++/8/bits/stl_tempbuf.h \
@@ -157,6 +155,7 @@ CMakeFiles/runAllTests.dir/test.cpp.o: \
  /usr/include/c++/8/bits/shared_ptr.h \
  /usr/include/c++/8/bits/shared_ptr_base.h \
  /usr/include/c++/8/bits/allocated_ptr.h \
+ /usr/include/c++/8/bits/refwrap.h \
  /usr/include/c++/8/bits/shared_ptr_atomic.h \
  /usr/include/c++/8/bits/atomic_base.h \
  /usr/include/c++/8/bits/atomic_lockfree_defines.h \
@@ -197,7 +196,8 @@ CMakeFiles/runAllTests.dir/test.cpp.o: \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/googletest/googletest/include/gtest/gtest-death-test.h \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/googletest/googletest/include/gtest/internal/gtest-death-test-internal.h \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/googletest/googletest/include/gtest/gtest-matchers.h \
- /usr/include/c++/8/atomic \
+ /usr/include/c++/8/atomic /usr/include/c++/8/functional \
+ /usr/include/c++/8/bits/std_function.h \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/googletest/googletest/include/gtest/gtest-printers.h \
  /home/csmajs/jmont229/cs170/CS170-Project1/test/googletest/googletest/include/gtest/internal/gtest-internal.h \
  /usr/include/sys/wait.h /usr/include/signal.h /usr/include/bits/signum.h \

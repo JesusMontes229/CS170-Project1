@@ -215,9 +215,6 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   /home/csmajs/jmont229/cs170/CS170-Project1/headers/Algorithm.h \
   /usr/include/c++/8/unordered_set \
   /usr/include/c++/8/bits/unordered_set.h \
-  /usr/include/c++/8/functional \
-  /usr/include/c++/8/bits/refwrap.h \
-  /usr/include/c++/8/bits/std_function.h \
   googletest/googletest/include/gtest/gtest.h \
   /usr/include/c++/8/cstddef \
   /usr/include/c++/8/limits \
@@ -229,6 +226,7 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   /usr/include/c++/8/bits/shared_ptr.h \
   /usr/include/c++/8/bits/shared_ptr_base.h \
   /usr/include/c++/8/bits/allocated_ptr.h \
+  /usr/include/c++/8/bits/refwrap.h \
   /usr/include/c++/8/bits/shared_ptr_atomic.h \
   /usr/include/c++/8/bits/atomic_base.h \
   /usr/include/c++/8/bits/atomic_lockfree_defines.h \
@@ -292,6 +290,8 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   googletest/googletest/include/gtest/internal/gtest-death-test-internal.h \
   googletest/googletest/include/gtest/gtest-matchers.h \
   /usr/include/c++/8/atomic \
+  /usr/include/c++/8/functional \
+  /usr/include/c++/8/bits/std_function.h \
   googletest/googletest/include/gtest/gtest-printers.h \
   googletest/googletest/include/gtest/internal/gtest-internal.h \
   /usr/include/sys/wait.h \
@@ -361,6 +361,8 @@ googletest/googletest/include/gtest/gtest-param-test.h:
 
 /usr/include/sys/wait.h:
 
+/usr/include/c++/8/functional:
+
 /usr/include/c++/8/cxxabi.h:
 
 /usr/include/c++/8/bits/parse_numbers.h:
@@ -376,6 +378,10 @@ googletest/googletest/include/gtest/gtest-param-test.h:
 /usr/include/asm-generic/posix_types.h:
 
 /usr/include/asm/posix_types_64.h:
+
+/usr/include/c++/8/bits/std_function.h:
+
+/usr/include/asm/posix_types.h:
 
 /usr/include/c++/8/mutex:
 
@@ -436,12 +442,6 @@ googletest/googletest/include/gtest/internal/gtest-internal.h:
 /usr/include/c++/8/cstddef:
 
 googletest/googletest/include/gtest/gtest.h:
-
-/usr/include/asm/posix_types.h:
-
-/usr/include/c++/8/bits/std_function.h:
-
-/usr/include/c++/8/functional:
 
 /usr/include/c++/8/bits/unordered_set.h:
 
