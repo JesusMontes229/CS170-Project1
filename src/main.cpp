@@ -49,7 +49,7 @@ int main() {
         cout << "Enter your puzzle, use a zero to represent the blank." << endl;
 
         // read puzzle from user
-        vector<int> input(9);
+        int input[] = {0,0,0,0,0,0,0,0,0};
         for (int i = 0; i < 3; ++i) {
             cout << "Enter row " << (i + 1) << ", use space or tabs between numbers: ";
             for (int j = 0; j < 3; ++j) {
@@ -59,7 +59,7 @@ int main() {
         
         
         // initialize problem accordingly
-        puzzlePTR = input.data();
+        puzzlePTR = input;
     }
     Problem initialState(puzzlePTR, 9);
     cout << "Enter your choice of algorithm:" << endl;
