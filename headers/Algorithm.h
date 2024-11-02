@@ -3,9 +3,10 @@
 
 #include "Node.h"
 #include "Problem.h"
+#include "Tree.h"
 #include <queue>
 
-Node* A_STAR_SEARCH(const Problem&, int (*heuristicfunc)(const Problem&));
+Node* A_STAR_SEARCH(Tree&, int (*heuristicfunc)(const Problem&));
 
 
 #endif 

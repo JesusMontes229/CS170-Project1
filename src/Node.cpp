@@ -2,7 +2,10 @@
 #include <cmath>
 
 Node::Node(const Problem& state, Node* parent, int g_cost, int h_cost, int depth)
-    : state(state), parent(parent), g_cost(g_cost), h_cost(h_cost), move(move), depth(depth) {}
+    : state(state), Parent(parent), g_cost(g_cost), h_cost(h_cost), depth(depth) {
+        ChildrenArr[0] = nullptr; ChildrenArr[1] = nullptr;
+        ChildrenArr[2] = nullptr; ChildrenArr[3] = nullptr;
+    }
 Node::Node()
 {
     
@@ -24,7 +27,7 @@ int Node::getTotalCost() const {
     return g_cost + h_cost;
 }
 
-const Problem& Node::getState() const {
+/*const Problem& Node::getState() const {
     return state;
 }
 
@@ -46,7 +49,7 @@ int Node::getDepth() const {
 
 /*ShiftDirection Node::getMove() const {
     return move;
-}*/
+}
 
 //setters 
 void Node::setState(const Problem& state) {
@@ -72,7 +75,7 @@ void Node::setDepth(int depth) {
 void Node::setMove(ShiftDirection move) {
     this->move = move;
 }
-
+*/
 void Node::printState() const {
     // Print the current board configuration
     for (int i = 0; i < 9; ++i) {
@@ -83,7 +86,7 @@ void Node::printState() const {
     cout << '\n';
 }
 //gets the all the children nodes from the current Node and stores them into a vector 
-const vector<Node*> Node::generateChildren(int (*heuristicfunc)(const Problem &)) {
+/*const vector<Node*> Node::generateChildren(int (*heuristicfunc)(const Problem &)) {
     vector<Node*> children; 
     Node* child = nullptr;
     for (ShiftDirection dir : {LEFT, UP, RIGHT, DOWN}) {
@@ -93,7 +96,7 @@ const vector<Node*> Node::generateChildren(int (*heuristicfunc)(const Problem &)
         child = nullptr;
     }
     return children;
-}
+}*/
 
 /*int Node::calculateHeuristic(const Problem& state) const {
      int heuristic = 0;

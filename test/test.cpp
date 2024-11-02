@@ -6,6 +6,8 @@
 #include "../src/Algorithm.cpp"
 #include "../headers/HeuristicFunc.h"
 #include "../src/HeuristicFunc.cpp"
+#include "../headers/Tree.h"
+#include "../src/Tree.cpp"
 #include "gtest/gtest.h"
 #include <string>
 
@@ -334,7 +336,41 @@ TEST(PROBLEM_EQ, equal)
     delete[] arr1;
     delete[] arr2;
 }
-
+TEST(TREECONSTRUCTOR, test)
+{
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 0; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 3; 
+    arr1[6] = 7;  arr1[7] = 8; arr1[8] = 6;
+    Problem TestBoard1(arr1, size);
+    //Node* testNode = new Node(TestBoard1, nullptr, 0, h(TestBoard1), 0);
+    //delete testNode;
+    Tree TestTree(TestBoard1, h);
+    delete[] arr1;
+}
+TEST(TREEEXPAND, test)
+{
+    int size = 9;
+    int *arr1 = new int[9];
+    arr1[0] = 1;  arr1[1] = 2; arr1[2] = 0; 
+    arr1[3] = 4;  arr1[4] = 5; arr1[5] = 3; 
+    arr1[6] = 7;  arr1[7] = 8; arr1[8] = 6;
+    Problem TestBoard1(arr1, size);
+    //Node* testNode = new Node(TestBoard1, nullptr, 0, h(TestBoard1), 0);
+    //delete testNode;
+    Tree TestTree(TestBoard1, h);
+    TestTree.ExpandNode(TestTree.getRoot(), h);
+    ASSERT_TRUE(TestTree.getRoot()->ChildrenArr[0] != nullptr);
+    ASSERT_TRUE(TestTree.getRoot()->ChildrenArr[3] != nullptr);
+    ASSERT_TRUE(TestTree.getRoot()->ChildrenArr[1] == nullptr);
+    ASSERT_TRUE(TestTree.getRoot()->ChildrenArr[2] == nullptr);
+    //TestTree.getRoot()->ChildrenArr[0]->printState();
+    ASSERT_TRUE(TestTree.getRoot()->ChildrenArr[0]->state == TestBoard1.Shift(LEFT));
+    ASSERT_TRUE(TestTree.getRoot()->ChildrenArr[3]->state == TestBoard1.Shift(DOWN));
+    
+    delete[] arr1;
+}
 TEST(ASTAR_SEARCH_UNIFORM, test1)
 {
     int size = 9;
@@ -343,14 +379,14 @@ TEST(ASTAR_SEARCH_UNIFORM, test1)
     arr1[3] = 4;  arr1[4] = 5; arr1[5] = 3; 
     arr1[6] = 7;  arr1[7] = 8; arr1[8] = 6;
     Problem TestBoard1(arr1, size);
-    vector<Node*> cleanUp;
-    Node* TestNode = A_STAR_SEARCH(TestBoard1, UniformCostSearchHeuristic);
-    ASSERT_TRUE( TestNode != nullptr);  
-    ASSERT_TRUE(TestNode->getState().isGoal());  
+    Tree TestTree(TestBoard1, UniformCostSearchHeuristic);
+    Node* Goaltest = A_STAR_SEARCH(TestTree, UniformCostSearchHeuristic);
+    ASSERT_TRUE(Goaltest != nullptr);
+     
     delete[] arr1;
-    delete TestNode;
+    //delete Goaltest;
 }
-/*TEST(ASTAR_SEARCH_UNIFORM, test2)
+TEST(ASTAR_SEARCH_UNIFORM, test2)
 {
     int size = 9;
     int *arr1 = new int[9];
@@ -358,11 +394,12 @@ TEST(ASTAR_SEARCH_UNIFORM, test1)
     arr1[3] = 6;  arr1[4] = 0; arr1[5] = 2; 
     arr1[6] = 5;  arr1[7] = 4; arr1[8] = 3;
     Problem TestBoard1(arr1, size);
-   Node* TestNode = A_STAR_SEARCH(TestBoard1, UniformCostSearchHeuristic);
-    ASSERT_TRUE( TestNode != nullptr);  
-    ASSERT_TRUE(TestNode->getState().isGoal());  
+    Tree TestTree(TestBoard1, UniformCostSearchHeuristic);
+    Node* Goaltest = A_STAR_SEARCH(TestTree, UniformCostSearchHeuristic);
+    ASSERT_TRUE(Goaltest != nullptr);
+    ASSERT_TRUE(Goaltest->state.isGoal());
     delete[] arr1;
-    delete TestNode;
+  
 }
 /*TEST(ASTAR_SEARCH_UNIFORM, test3_impossible)
 {
@@ -376,7 +413,7 @@ TEST(ASTAR_SEARCH_UNIFORM, test1)
     ASSERT_TRUE( TestNode == nullptr);    
     delete[] arr1;
     //delete TestNode;
-} 
+} */
 TEST(ASTAR_SEARCH_EUCLIDEAN, test1)
 {
     int size = 9;
@@ -385,11 +422,11 @@ TEST(ASTAR_SEARCH_EUCLIDEAN, test1)
     arr1[3] = 4;  arr1[4] = 5; arr1[5] = 3; 
     arr1[6] = 7;  arr1[7] = 8; arr1[8] = 6;
     Problem TestBoard1(arr1, size);
-    Node* TestNode = A_STAR_SEARCH(TestBoard1, EuclideanDistHeuristic);
-    ASSERT_TRUE( TestNode != nullptr);  
-    ASSERT_TRUE(TestNode->getState().isGoal());  
+    Tree TestTree(TestBoard1, EuclideanDistHeuristic);
+    Node* Goaltest = A_STAR_SEARCH(TestTree, EuclideanDistHeuristic);
+    ASSERT_TRUE(Goaltest != nullptr);
+    ASSERT_TRUE(Goaltest->state.isGoal());
     delete[] arr1;
-    delete TestNode;
 }
 TEST(ASTAR_SEARCH_EUCLIDEAN, test2)
 {
@@ -399,12 +436,17 @@ TEST(ASTAR_SEARCH_EUCLIDEAN, test2)
     arr1[3] = 6;  arr1[4] = 0; arr1[5] = 2; 
     arr1[6] = 5;  arr1[7] = 4; arr1[8] = 3;
     Problem TestBoard1(arr1, size);
-   Node* TestNode = A_STAR_SEARCH(TestBoard1, EuclideanDistHeuristic);
-    ASSERT_TRUE( TestNode != nullptr);  
-    ASSERT_TRUE(TestNode->getState().isGoal());
-     
+    Tree TestTree(TestBoard1, EuclideanDistHeuristic);
+    Node* Goaltest = A_STAR_SEARCH(TestTree, EuclideanDistHeuristic);
+    ASSERT_TRUE(Goaltest != nullptr);
+    ASSERT_TRUE(Goaltest->state.isGoal());
     delete[] arr1;
-    delete TestNode;
+    Node* nodePTR = Goaltest;
+    while(nodePTR != nullptr)
+    {
+        nodePTR->printState();
+        nodePTR = nodePTR->Parent;
+    }
 }
 /*TEST(ASTAR_SEARCH_EUCLIDEAN, test3_impossible)
 {

@@ -205,6 +205,7 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   /home/csmajs/jmont229/cs170/CS170-Project1/headers/Algorithm.h \
   /home/csmajs/jmont229/cs170/CS170-Project1/headers/Node.h \
   /home/csmajs/jmont229/cs170/CS170-Project1/headers/Problem.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Tree.h \
   /usr/include/c++/8/queue \
   /usr/include/c++/8/deque \
   /usr/include/c++/8/bits/stl_deque.h \
@@ -219,6 +220,9 @@ CMakeFiles/runAllTests.dir/test.cpp.o: test.cpp \
   /home/csmajs/jmont229/cs170/CS170-Project1/headers/Algorithm.h \
   /home/csmajs/jmont229/cs170/CS170-Project1/src/HeuristicFunc.cpp \
   /home/csmajs/jmont229/cs170/CS170-Project1/headers/HeuristicFunc.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Tree.h \
+  /home/csmajs/jmont229/cs170/CS170-Project1/src/Tree.cpp \
+  /home/csmajs/jmont229/cs170/CS170-Project1/headers/Tree.h \
   googletest/googletest/include/gtest/gtest.h \
   /usr/include/c++/8/cstddef \
   /usr/include/c++/8/limits \
@@ -441,6 +445,8 @@ googletest/googletest/include/gtest/internal/gtest-internal.h:
 
 googletest/googletest/include/gtest/gtest.h:
 
+/home/csmajs/jmont229/cs170/CS170-Project1/src/Tree.cpp:
+
 /usr/include/assert.h:
 
 /usr/include/c++/8/bits/stl_set.h:
@@ -464,6 +470,8 @@ googletest/googletest/include/gtest/gtest.h:
 /usr/include/bits/statx-generic.h:
 
 /usr/include/c++/8/deque:
+
+/home/csmajs/jmont229/cs170/CS170-Project1/headers/Tree.h:
 
 /home/csmajs/jmont229/cs170/CS170-Project1/headers/Algorithm.h:
 

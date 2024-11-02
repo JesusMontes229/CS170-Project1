@@ -4,9 +4,7 @@
 #include "../headers/Problem.h" 
 #include "../headers/Node.h" 
 #include "../headers/Algorithm.h"
-#include "../headers/AstarEuclidean.h"
-#include "../headers/AstarMisplacedTile.h"
-#include "../headers/UniformCostSearch.h"
+#include "../headers/Tree.h"
 
 
 using namespace std;
@@ -62,18 +60,14 @@ int main() {
     // call each algorithm according to user input
     switch (algorithmChoice) {
         case 1: {
-            UniformCostSearch solver; 
-            resultNode = solver.solve(initialState);
+            
             break;
         }
         case 2: {
-            AStarMisplacedTile solver;
-            resultNode = solver.solve(initialState);
+        
             break;
         }
         case 3: {
-            AStarEuclidean solver;
-            resultNode = solver.solve(initialState);
             break;
         }
         default:
@@ -85,25 +79,25 @@ int main() {
     if (resultNode != nullptr) {
         // print the path from the initial state to the goal state
         vector<Node*> path;
-        for (Node* node = resultNode; node != nullptr; node = node->getParent()) {
+        for (Node* node = resultNode; node != nullptr; node = node->Parent) {
             path.push_back(node);
         }
 
         // output the expanding states with their g(n) and h(n)
         for (int i = path.size() - 1; i >= 0; --i) {
             Node* currentNode = path[i];
-            int g_n = currentNode->getDepth(); // Cost to reach this node
+            int g_n = currentNode->depth; // Cost to reach this node
             //int h_n = currentNode->calculateHeuristic(); // Heuristic value
 
             // print the current state being expanded
             cout << "Expanding state:" << endl;
-            printPuzzle(currentNode->getState());
+            printPuzzle(currentNode->state);
 
             // print the best state to expand
             if (i > 0) { // ensure there's a next state to expand
                 Node* nextNode = path[i - 1];
                 //cout << "The best state to expand with g(n) = " << g_n << " and h(n) = " << h_n << " is..." << endl;
-                printPuzzle(nextNode->getState());
+                printPuzzle(nextNode->state);
                 cout << "Expanding this node..." << endl;
             }
         }

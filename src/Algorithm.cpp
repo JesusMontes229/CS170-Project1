@@ -20,29 +20,46 @@ bool hasProblemBeenVisited(const unordered_multiset<Problem, HashProblem>& viste
     return false;
 
 }
-
-Node* A_STAR_SEARCH(const Problem& initial, int (*heuristicfunc)(const Problem&))
+void ExpandSpace(std::priority_queue<Node* , std::vector<Node*>, std::greater<Node*>>& Search, unordered_multiset<Problem, HashProblem>& dump,
+int (*heuristicfunc)(const Problem&), Node* curr, Tree& T)
 {
-    Node* current = new Node(initial, nullptr, 0, heuristicfunc(initial), 0);
-    std::priority_queue<Node* , std::vector<Node*>, std::greater<Node*> > searchSpace;
+    //cout << "visted ExpandSpace" << endl;
+    T.ExpandNode(curr, heuristicfunc);
+    for(int i = 0; i < 4; ++i)
+    {
+        if(curr->ChildrenArr[i] != nullptr && !hasProblemBeenVisited(dump, curr->ChildrenArr[i]->state))
+        {
+            //cout << "added to search" << endl;
+            Search.emplace(curr->ChildrenArr[i]);
+        }
+    }
+}
+Node* A_STAR_SEARCH(Tree& T, int (*heuristicfunc)(const Problem&))
+{
+    Node* current = T.getRoot();
+    std::priority_queue<Node* , std::vector<Node*>, std::greater<Node*>> searchSpace;
     unordered_multiset<Problem, HashProblem> checkedSpace;
-
     searchSpace.push(current);
     while(!searchSpace.empty())
     {
-        //cout<< "entered" << endl;
         current = searchSpace.top();
         searchSpace.pop();
-        if(current->getState().isGoal())
+        if(current->state.isGoal())
         {
             current->printState();
-            cout << endl;
-            cout << current->getHCost() << endl;
-            cout << current->getGCost() << endl;
-            cout << current->getDepth() << endl;
+            cout<< current->g_cost << endl;
             return current;
         }
-        vector<Node*> expandedChildren;
+        //current->printState();
+        //cout<< current->g_cost << endl;
+        ExpandSpace(searchSpace, checkedSpace, heuristicfunc, current, T);
+        checkedSpace.emplace(current->state);
+        
+    }
+    return nullptr;
+}
+/*
+vector<Node*> expandedChildren;
         expandedChildren = current->generateChildren(heuristicfunc);
         for(int i = 0; i < expandedChildren.size(); ++i)
         {
@@ -54,6 +71,4 @@ Node* A_STAR_SEARCH(const Problem& initial, int (*heuristicfunc)(const Problem&)
             }
         }
         checkedSpace.emplace(current->getState());
-    }
-    return nullptr;
-}
+*/

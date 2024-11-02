@@ -31,6 +31,6 @@ int EuclideanDistHeuristic(const Problem& initialState)
             heuristicValue = heuristicValue + (int)floor((sqrt(pow((targetX - currentX), 2) + pow((targetY - currentY), 2))));
         }
     }
-    //cout << heuristicValue << endl;
+    cout << heuristicValue << endl;
     return heuristicValue;
 }
