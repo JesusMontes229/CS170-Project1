@@ -1,11 +1,24 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "AStarMisplacedTile.h" // all three searches
-#include "UniformCostSearch.h"
-#include "AstarEuclidean.h"
-#include "Problem.h" 
-#include "Node.h" 
+#include "../headers/Problem.h" 
+#include "../headers/Node.h" 
+#include "../headers/Algorithm.h"
+#include "../headers/Tree.h"
+#include "../headers/HeuristicFunc.h"
+
+void PrintPath(Node* currentNode)
+{
+    if(currentNode == nullptr)
+    {
+        
+    }
+    else{
+        PrintPath(currentNode->Parent);
+
+    }
+}
+
 
 using namespace std;
 
@@ -25,17 +38,18 @@ int main() {
     cin >> choice;
 
     // define a default puzzle
-    const int defaultPuzzle[] = {1, 2, 3, 4, 0, 5, 7, 8, 6};
-    Problem initialState(nullptr, 9); // nullptr initialize
+    const int defaultPuzzle[] = {8, 7, 1, 6, 0, 2, 5, 4, 3};
+    const int *puzzlePTR = nullptr;
+    //Problem initialState(defaultPuzzle, 9); // nullptr initialize
 
     if (choice == 1) {
         // using default puzzle
-        initialState = Problem(defaultPuzzle, 9);
+        puzzlePTR = defaultPuzzle;
     } else if (choice == 2) {
         cout << "Enter your puzzle, use a zero to represent the blank." << endl;
 
         // read puzzle from user
-        vector<int> input(9);
+        int input[] = {0,0,0,0,0,0,0,0,0};
         for (int i = 0; i < 3; ++i) {
             cout << "Enter row " << (i + 1) << ", use space or tabs between numbers: ";
             for (int j = 0; j < 3; ++j) {
@@ -43,10 +57,11 @@ int main() {
             }
         }
         
+        
         // initialize problem accordingly
-        initialState = Problem(input.data(), 9);
+        puzzlePTR = input;
     }
-
+    Problem initialState(puzzlePTR, 9);
     cout << "Enter your choice of algorithm:" << endl;
     cout << "1. Uniform Cost Search" << endl;
     cout << "2. A* with the Misplaced Tile heuristic." << endl;
@@ -54,65 +69,65 @@ int main() {
 
     int algorithmChoice;
     cin >> algorithmChoice;
-
     Node* resultNode = nullptr;
-
+    
+    int(*HeuristicFunc)(const Problem&);
     // call each algorithm according to user input
     switch (algorithmChoice) {
         case 1: {
-            UniformCostSearch solver; 
-            resultNode = solver.solve(initialState);
+            HeuristicFunc = UniformCostSearchHeuristic;
             break;
         }
         case 2: {
-            AStarMisplacedTile solver;
-            resultNode = solver.solve(initialState);
+            HeuristicFunc = MisplacedTileHeuristic;
             break;
         }
         case 3: {
-            AstarEuclidean solver;
-            resultNode = solver.solve(initialState);
+            HeuristicFunc = EuclideanDistHeuristic;
             break;
         }
         default:
             cout << "Invalid choice." << endl;
             return 1; // Exit if the choice is invalid
     }
-
+    Tree SearchTree(initialState, HeuristicFunc);
+    resultNode = A_STAR_SEARCH(SearchTree, HeuristicFunc);
     // print the results if there is a solution
     if (resultNode != nullptr) {
         // print the path from the initial state to the goal state
         vector<Node*> path;
-        for (Node* node = resultNode; node != nullptr; node = node->getParent()) {
+        for (Node* node = resultNode; node != nullptr; node = node->Parent) {
             path.push_back(node);
         }
 
         // output the expanding states with their g(n) and h(n)
         for (int i = path.size() - 1; i >= 0; --i) {
             Node* currentNode = path[i];
-            int g_n = currentNode->getDepth(); // Cost to reach this node
-            int h_n = currentNode->calculateHeuristic(); // Heuristic value
+            int g_n = currentNode->depth; // Cost to reach this node
+            int h_n = currentNode->h_cost; // Heuristic value
 
             // print the current state being expanded
             cout << "Expanding state:" << endl;
-            printPuzzle(currentNode->getState());
+            //printPuzzle(currentNode->state);
+            currentNode->printState();
 
-            // print the best state to expand
+            //print the best state to expand
             if (i > 0) { // ensure there's a next state to expand
                 Node* nextNode = path[i - 1];
                 cout << "The best state to expand with g(n) = " << g_n << " and h(n) = " << h_n << " is..." << endl;
-                printPuzzle(nextNode->getState());
+                //printPuzzle(nextNode->state);
+                nextNode->printState();
                 cout << "Expanding this node..." << endl;
             }
         }
 
         cout << "Goal!!!" << endl;
         cout << "To solve this problem the search algorithm expanded a total of " 
-             << resultNode->getExpandedNodes() << " nodes." << endl; // print total nodes expanded
+             << SearchTree.NumOfNodes << " nodes." << endl; // print total nodes expanded
         cout << "The maximum number of nodes in the queue at any one time: " 
-             << resultNode->getMaxQueueSize() << "." << endl; // display maxQueueSize
+             << SearchTree.maxQueueSize << "." << endl; // display maxQueueSize*/
         cout << "The depth of the goal node was " 
-             << resultNode->getDepth() << "." << endl; // depth of the goal node
+             << resultNode->depth << "." << endl; // depth of the goal node*/
 
     } else {
         cout << "No solution found." << endl;

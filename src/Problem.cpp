@@ -1,5 +1,6 @@
 #include "../headers/Problem.h"
 #include <stdexcept>
+#include <iostream>
 #include <unordered_map>
 Problem::Problem(const int *Array, const int size)
 {
@@ -12,6 +13,7 @@ Problem::Problem(const int *Array, const int size)
     {
         if(testMap.count(Array[i]) > 0 || Array[i] >= size)
         {
+            std::cout << i << std::endl;
             throw std::runtime_error("INVALID ELEMENT IN THE BOARD");
         }
         else{
@@ -80,6 +82,7 @@ Problem Problem::Shift(ShiftDirection _direction) const
         int BlankHolder = NewBoard.Board.at(NewBoard.BlankSlateIndex);
         NewBoard.Board.at(NewBoard.BlankSlateIndex) = NewBoard.Board.at(NewBoard.BlankSlateIndex + i);
         NewBoard.Board.at(NewBoard.BlankSlateIndex + i) = BlankHolder;
+        NewBoard.BlankSlateIndex = NewBoard.BlankSlateIndex + i;
         
     }
     else{
@@ -122,11 +125,12 @@ bool Problem::isSolvable() const {
         }
     }
     return inversions % 2 == 0;
+}
 Problem::Problem()
 {
 
 }
-bool Problem::operator==(const Problem& RHS)
+bool Problem::operator==(const Problem& RHS) const
 {
     for(int i = 0; i < this->size; ++i)
     {
@@ -136,4 +140,8 @@ bool Problem::operator==(const Problem& RHS)
         }
     }
     return true;
+}
+int Problem::getSize() const
+{
+    return size;
 }

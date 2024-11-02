@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/search.dir/Algorithm.cpp.o CMakeFiles/search.dir/HeuristicFunc.cpp.o CMakeFiles/search.dir/main.cpp.o CMakeFiles/search.dir/Node.cpp.o CMakeFiles/search.dir/Problem.cpp.o CMakeFiles/search.dir/Tree.cpp.o -o search 

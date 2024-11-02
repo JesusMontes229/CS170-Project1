@@ -8,27 +8,25 @@
 using namespace std;
 
 
-class Node {
-private:
+/*class Node {
+    public:
     Problem state;
     Node* parent;
     int g_cost;
     int h_cost;
     int depth;
-    //to help keep track of the move direction from current state to parent state
-    ShiftDirection move;
-
-    //helper private function for calculating hueristic cost
-    int calculateHeuristic(const Problem& state) const;
-
-public:
+    Node* left;
+    Node* right;
+    Node* up;
+    Node* down;
     //initializing everyrhting to nothing (constructor, intial state)
-    Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost = 0);
+    Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost = 0, int depth = 0);
     Node();
 
     //bool operators 
     bool operator()(const Node*, const Node*);
     bool operator==(const Node* );
+    bool operator<(const Node*);
 
     //getters
     int getTotalCost() const;
@@ -37,7 +35,8 @@ public:
     int getGCost() const;
     int getHCost() const;
     int getDepth() const;
-    ShiftDirection getMove() const;
+    Node* getChild(ShiftDirection);
+    //ShiftDirection getMove() const;
 
     //setters 
     void setState(const Problem& state);
@@ -50,7 +49,27 @@ public:
     void printState() const;
     //create and return all child nodes from current node states
     //for A* and Uniform Cost Search
-    const vector<Node*> generateChildren();
+    const vector<Node*> generateChildren(int (*heuristicfunc)(const Problem &));
+};
+*/
+class Node {
+public:
+Problem state;
+Node* Parent;
+Node* ChildrenArr[4];  //Left, Up, right, down
+int g_cost;
+int h_cost;
+int depth;
+bool operator()(const Node*, const Node*);
+bool operator==(const Node* );
+bool operator<(const Node*);
+Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost = 0, int depth = 0);
+Node();
+void printState() const;
+int getTotalCost() const ; 
+
+private:
+    
 };
 
 #endif // NODE_H
