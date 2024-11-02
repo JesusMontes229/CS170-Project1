@@ -27,10 +27,13 @@ int (*heuristicfunc)(const Problem&), Node* curr, Tree& T)
     T.ExpandNode(curr, heuristicfunc);
     for(int i = 0; i < 4; ++i)
     {
-        if(curr->ChildrenArr[i] != nullptr && !hasProblemBeenVisited(dump, curr->ChildrenArr[i]->state))
+        if(curr->ChildrenArr[i] != nullptr)
         {
             //cout << "added to search" << endl;
-            Search.emplace(curr->ChildrenArr[i]);
+            if(!hasProblemBeenVisited(dump, curr->ChildrenArr[i]->state))
+            {
+                Search.emplace(curr->ChildrenArr[i]);
+            }
         }
     }
 }
@@ -49,7 +52,9 @@ Node* A_STAR_SEARCH(Tree& T, int (*heuristicfunc)(const Problem&))
         {
             //current->printState();
             //cout<< current->g_cost << endl;
-            return current;
+            cout << checkedSpace.size() << endl;
+            return current; //173980
+
         }
         //current->printState();
         //cout<< current->g_cost << endl;
@@ -59,6 +64,7 @@ Node* A_STAR_SEARCH(Tree& T, int (*heuristicfunc)(const Problem&))
         {
             T.maxQueueSize = searchSpace.size();
         }
+        
     }
     return nullptr;
 }
