@@ -10,6 +10,8 @@ class Tree{
     Node* ExpandNode(Node*, int(*HeuristicFunc)(const Problem&));
     Node* getRoot();
     ~Tree();
+    int maxQueueSize;
+    int NumOfNodes;
     private:
     Node* root;
     void destroyTree(Node*);

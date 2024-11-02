@@ -3,6 +3,8 @@
 Tree::Tree(const Problem& initialState,  int(*HeuristicFunc)(const Problem&))
 {
     root = new Node(initialState, nullptr, 0, HeuristicFunc(initialState), 0);
+    NumOfNodes = 1;
+    maxQueueSize = 0;
 }
 Tree::Tree()
 {
@@ -44,6 +46,7 @@ Node* Tree::ExpandNode(Node* curr, int(*HeuristicFunc)(const Problem&))
                curr->ChildrenArr[i] = 
                new Node(curr->state.Shift(dir[i]), curr, curr->g_cost + 1,HeuristicFunc(curr->state.Shift(dir[i])), curr->depth + 1) ;
                //curr->ChildrenArr[i]->printState();
+               ++NumOfNodes;
             }
             else
             {

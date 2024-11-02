@@ -39,6 +39,7 @@ Node* A_STAR_SEARCH(Tree& T, int (*heuristicfunc)(const Problem&))
     Node* current = T.getRoot();
     std::priority_queue<Node* , std::vector<Node*>, std::greater<Node*>> searchSpace;
     unordered_multiset<Problem, HashProblem> checkedSpace;
+    T.maxQueueSize = searchSpace.size();
     searchSpace.push(current);
     while(!searchSpace.empty())
     {
@@ -54,7 +55,10 @@ Node* A_STAR_SEARCH(Tree& T, int (*heuristicfunc)(const Problem&))
         //cout<< current->g_cost << endl;
         ExpandSpace(searchSpace, checkedSpace, heuristicfunc, current, T);
         checkedSpace.emplace(current->state);
-        
+        if(T.maxQueueSize < searchSpace.size())
+        {
+            T.maxQueueSize = searchSpace.size();
+        }
     }
     return nullptr;
 }

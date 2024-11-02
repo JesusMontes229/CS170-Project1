@@ -121,11 +121,11 @@ int main() {
             }
         }
 
-        /*cout << "Goal!!!" << endl;
+        cout << "Goal!!!" << endl;
         cout << "To solve this problem the search algorithm expanded a total of " 
-             << resultNode->getExpandedNodes() << " nodes." << endl; // print total nodes expanded
+             << SearchTree.NumOfNodes << " nodes." << endl; // print total nodes expanded
         cout << "The maximum number of nodes in the queue at any one time: " 
-             << resultNode->getMaxQueueSize() << "." << endl; // display maxQueueSize*/
+             << SearchTree.maxQueueSize << "." << endl; // display maxQueueSize*/
         cout << "The depth of the goal node was " 
              << resultNode->depth << "." << endl; // depth of the goal node*/
 
