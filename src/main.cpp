@@ -5,6 +5,7 @@
 #include "../headers/Node.h" 
 #include "../headers/Algorithm.h"
 #include "../headers/Tree.h"
+#include "../headers/HeuristicFunc.h"
 
 
 using namespace std;
@@ -26,11 +27,12 @@ int main() {
 
     // define a default puzzle
     const int defaultPuzzle[] = {1, 2, 3, 4, 0, 5, 7, 8, 6};
-    Problem initialState(nullptr, 9); // nullptr initialize
+    const int *puzzlePTR = nullptr;
+    //Problem initialState(defaultPuzzle, 9); // nullptr initialize
 
     if (choice == 1) {
         // using default puzzle
-        initialState = Problem(defaultPuzzle, 9);
+        puzzlePTR = defaultPuzzle;
     } else if (choice == 2) {
         cout << "Enter your puzzle, use a zero to represent the blank." << endl;
 
@@ -43,10 +45,11 @@ int main() {
             }
         }
         
+        
         // initialize problem accordingly
-        initialState = Problem(input.data(), 9);
+        puzzlePTR = input.data();
     }
-
+    Problem initialState(puzzlePTR, 9);
     cout << "Enter your choice of algorithm:" << endl;
     cout << "1. Uniform Cost Search" << endl;
     cout << "2. A* with the Misplaced Tile heuristic." << endl;
@@ -54,13 +57,13 @@ int main() {
 
     int algorithmChoice;
     cin >> algorithmChoice;
-
     Node* resultNode = nullptr;
-
+    
+    int(*HeuristicFunc)(const Problem&);
     // call each algorithm according to user input
     switch (algorithmChoice) {
         case 1: {
-            
+            HeuristicFunc = UniformCostSearchHeuristic;
             break;
         }
         case 2: {
@@ -68,13 +71,15 @@ int main() {
             break;
         }
         case 3: {
+            HeuristicFunc = EuclideanDistHeuristic;
             break;
         }
         default:
             cout << "Invalid choice." << endl;
             return 1; // Exit if the choice is invalid
     }
-
+    Tree SearchTree(initialState, HeuristicFunc);
+    resultNode = A_STAR_SEARCH(SearchTree, HeuristicFunc);
     // print the results if there is a solution
     if (resultNode != nullptr) {
         // print the path from the initial state to the goal state
@@ -91,7 +96,8 @@ int main() {
 
             // print the current state being expanded
             cout << "Expanding state:" << endl;
-            printPuzzle(currentNode->state);
+            //printPuzzle(currentNode->state);
+            currentNode->printState();
 
             // print the best state to expand
             if (i > 0) { // ensure there's a next state to expand

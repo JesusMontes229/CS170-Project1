@@ -1,5 +1,6 @@
 #include "../headers/Problem.h"
 #include <stdexcept>
+#include <iostream>
 #include <unordered_map>
 Problem::Problem(const int *Array, const int size)
 {
@@ -12,6 +13,7 @@ Problem::Problem(const int *Array, const int size)
     {
         if(testMap.count(Array[i]) > 0 || Array[i] >= size)
         {
+            std::cout << i << std::endl;
             throw std::runtime_error("INVALID ELEMENT IN THE BOARD");
         }
         else{
