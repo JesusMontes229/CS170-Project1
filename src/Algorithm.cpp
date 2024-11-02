@@ -46,8 +46,8 @@ Node* A_STAR_SEARCH(Tree& T, int (*heuristicfunc)(const Problem&))
         searchSpace.pop();
         if(current->state.isGoal())
         {
-            current->printState();
-            cout<< current->g_cost << endl;
+            //current->printState();
+            //cout<< current->g_cost << endl;
             return current;
         }
         //current->printState();

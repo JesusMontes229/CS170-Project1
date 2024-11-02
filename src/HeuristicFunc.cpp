@@ -31,6 +31,18 @@ int EuclideanDistHeuristic(const Problem& initialState)
             heuristicValue = heuristicValue + (int)floor((sqrt(pow((targetX - currentX), 2) + pow((targetY - currentY), 2))));
         }
     }
-    cout << heuristicValue << endl;
+    //cout << heuristicValue << endl;
     return heuristicValue;
+}
+int MisplacedTileHeuristic(const Problem& initialState)
+{
+    int numOfMisplacedTiles = 0;
+    for(int i = 0; i < 9; ++i)
+    {
+        if(initialState.GetValueAtIndex(i) != 0 && initialState.GetValueAtIndex(i) != i)
+        {
+            ++numOfMisplacedTiles;
+        }
+    }
+    return numOfMisplacedTiles;
 }

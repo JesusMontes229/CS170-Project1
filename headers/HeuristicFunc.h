@@ -5,6 +5,6 @@
 
 int UniformCostSearchHeuristic(const Problem& initialState);
 int EuclideanDistHeuristic(const Problem& initialState);
-//int MisplacedTileHeuristic(const Problem& initialState);
+int MisplacedTileHeuristic(const Problem& initialState);
 
 #endif 

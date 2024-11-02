@@ -7,6 +7,18 @@
 #include "../headers/Tree.h"
 #include "../headers/HeuristicFunc.h"
 
+void PrintPath(Node* currentNode)
+{
+    if(currentNode == nullptr)
+    {
+        
+    }
+    else{
+        PrintPath(currentNode->Parent);
+
+    }
+}
+
 
 using namespace std;
 
@@ -26,7 +38,7 @@ int main() {
     cin >> choice;
 
     // define a default puzzle
-    const int defaultPuzzle[] = {1, 2, 3, 4, 0, 5, 7, 8, 6};
+    const int defaultPuzzle[] = {8, 7, 1, 6, 0, 2, 5, 4, 3};
     const int *puzzlePTR = nullptr;
     //Problem initialState(defaultPuzzle, 9); // nullptr initialize
 
@@ -67,7 +79,7 @@ int main() {
             break;
         }
         case 2: {
-        
+            HeuristicFunc = MisplacedTileHeuristic;
             break;
         }
         case 3: {
@@ -92,18 +104,19 @@ int main() {
         for (int i = path.size() - 1; i >= 0; --i) {
             Node* currentNode = path[i];
             int g_n = currentNode->depth; // Cost to reach this node
-            //int h_n = currentNode->calculateHeuristic(); // Heuristic value
+            int h_n = currentNode->h_cost; // Heuristic value
 
             // print the current state being expanded
             cout << "Expanding state:" << endl;
             //printPuzzle(currentNode->state);
             currentNode->printState();
 
-            // print the best state to expand
+            //print the best state to expand
             if (i > 0) { // ensure there's a next state to expand
                 Node* nextNode = path[i - 1];
-                //cout << "The best state to expand with g(n) = " << g_n << " and h(n) = " << h_n << " is..." << endl;
-                printPuzzle(nextNode->state);
+                cout << "The best state to expand with g(n) = " << g_n << " and h(n) = " << h_n << " is..." << endl;
+                //printPuzzle(nextNode->state);
+                nextNode->printState();
                 cout << "Expanding this node..." << endl;
             }
         }
@@ -112,9 +125,9 @@ int main() {
         cout << "To solve this problem the search algorithm expanded a total of " 
              << resultNode->getExpandedNodes() << " nodes." << endl; // print total nodes expanded
         cout << "The maximum number of nodes in the queue at any one time: " 
-             << resultNode->getMaxQueueSize() << "." << endl; // display maxQueueSize
+             << resultNode->getMaxQueueSize() << "." << endl; // display maxQueueSize*/
         cout << "The depth of the goal node was " 
-             << resultNode->getDepth() << "." << endl; // depth of the goal node*/
+             << resultNode->depth << "." << endl; // depth of the goal node*/
 
     } else {
         cout << "No solution found." << endl;
