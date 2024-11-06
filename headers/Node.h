@@ -60,9 +60,9 @@ Node* ChildrenArr[4];  //Left, Up, right, down
 int g_cost;
 int h_cost;
 int depth;
-bool operator()(const Node*, const Node*);
+//bool operator()(const Node*, const Node*);
 bool operator==(const Node* );
-bool operator<(const Node*);
+bool operator<(const Node*) const;
 Node (const Problem& state, Node* parent = nullptr, int g_cost = 0, int h_cost = 0, int depth = 0);
 Node();
 void printState() const;

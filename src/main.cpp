@@ -38,7 +38,7 @@ int main() {
     cin >> choice;
 
     // define a default puzzle
-    const int defaultPuzzle[] = {8, 7, 1, 6, 0, 2, 5, 4, 3};
+    const int defaultPuzzle[] = {0, 1, 2, 4,5, 3, 7, 8, 6};
     const int *puzzlePTR = nullptr;
     //Problem initialState(defaultPuzzle, 9); // nullptr initialize
 
@@ -75,15 +75,15 @@ int main() {
     // call each algorithm according to user input
     switch (algorithmChoice) {
         case 1: {
-            HeuristicFunc = UniformCostSearchHeuristic;
+            HeuristicFunc = &UniformCostSearchHeuristic;
             break;
         }
         case 2: {
-            HeuristicFunc = MisplacedTileHeuristic;
+            HeuristicFunc = &MisplacedTileHeuristic;
             break;
         }
         case 3: {
-            HeuristicFunc = EuclideanDistHeuristic;
+            HeuristicFunc = &EuclideanDistHeuristic;
             break;
         }
         default:

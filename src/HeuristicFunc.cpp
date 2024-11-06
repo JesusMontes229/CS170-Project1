@@ -39,7 +39,7 @@ int MisplacedTileHeuristic(const Problem& initialState)
     int numOfMisplacedTiles = 0;
     for(int i = 0; i < 9; ++i)
     {
-        if(initialState.GetValueAtIndex(i) != 0 && initialState.GetValueAtIndex(i) != i)
+        if(initialState.GetValueAtIndex(i) != 0 && initialState.GetValueAtIndex(i) != i + 1)
         {
             ++numOfMisplacedTiles;
         }
