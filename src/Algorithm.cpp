@@ -61,12 +61,12 @@ Node* A_STAR_SEARCH(Tree& T, int (*heuristicfunc)(const Problem&))
     {
         current = searchSpace.top();
         searchSpace.pop();
-        cout << "current top t cost " << current->getTotalCost() << endl;
+        //cout << "current top t cost " << current->getTotalCost() << endl;
         if(current->state.isGoal())
         {
             //current->printState();
             //cout<< current->g_cost << endl;
-            cout <<  "checkedSpace" <<checkedSpace.size() << endl;
+            //cout <<  "checkedSpace" <<checkedSpace.size() << endl;
             return current; //173980
 
         }
