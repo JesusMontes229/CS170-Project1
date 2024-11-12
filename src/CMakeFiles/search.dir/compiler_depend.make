@@ -194,7 +194,10 @@ CMakeFiles/search.dir/Algorithm.cpp.o: Algorithm.cpp \
   /usr/include/c++/8/bits/stl_relops.h \
   /usr/include/c++/8/array \
   /usr/include/c++/8/bits/invoke.h \
-  /usr/include/c++/8/bits/unordered_set.h
+  /usr/include/c++/8/bits/unordered_set.h \
+  /usr/include/c++/8/functional \
+  /usr/include/c++/8/bits/refwrap.h \
+  /usr/include/c++/8/bits/std_function.h
 
 CMakeFiles/search.dir/HeuristicFunc.cpp.o: HeuristicFunc.cpp \
   /usr/include/stdc-predef.h \
@@ -1165,6 +1168,10 @@ main.cpp:
 
 /home/csmajs/jmont229/cs170/CS170-Project1/headers/HeuristicFunc.h:
 
+/usr/include/c++/8/bits/std_function.h:
+
+/usr/include/c++/8/functional:
+
 /usr/include/c++/8/bits/unordered_set.h:
 
 /usr/include/c++/8/array:
@@ -1430,6 +1437,8 @@ Tree.cpp:
 /usr/include/c++/8/utility:
 
 /usr/include/bits/locale.h:
+
+/usr/include/c++/8/bits/refwrap.h:
 
 /usr/include/locale.h:
 

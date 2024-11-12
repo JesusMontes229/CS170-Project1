@@ -196,6 +196,9 @@ CMakeFiles/search.dir/Algorithm.cpp.o
  /usr/include/c++/8/array
  /usr/include/c++/8/bits/invoke.h
  /usr/include/c++/8/bits/unordered_set.h
+ /usr/include/c++/8/functional
+ /usr/include/c++/8/bits/refwrap.h
+ /usr/include/c++/8/bits/std_function.h
 
 CMakeFiles/search.dir/HeuristicFunc.cpp.o
  /home/csmajs/jmont229/cs170/CS170-Project1/src/HeuristicFunc.cpp

@@ -11,15 +11,16 @@ Node::Node()
     
 }
 
-bool Node::operator()(const Node* RHS, const Node* LHS){
+/*bool Node::operator()(const Node* RHS, const Node* LHS){
     return (RHS->h_cost + RHS->g_cost) < (LHS->h_cost + LHS->g_cost);
-}
+}*/
 bool Node::operator==(const Node* RHS){
     return (this->state == RHS->state);
 }
-bool Node::operator<(const Node* RHS)
+bool Node::operator<(const Node* RHS) const
 {
-    return this->getTotalCost() < RHS->getTotalCost();
+    //return this->getTotalCost() < RHS->getTotalCost();
+    return (this->h_cost + this->g_cost) < (RHS->h_cost + RHS->g_cost);
 }
 
 //getters 
