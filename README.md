@@ -25,15 +25,7 @@ The A* search algorithm that is modified using the Misplaced Tile Heuristic has 
 The A* search algorithm that is modified using the Euclidean Distance Heuristic has the main goal of finding the shortest path from the start state to the goal state by using the Euclidean Distance Formula. It does this by using the function f(n) = g(n) + h(n), where the g(n) value represents the cost to reach a node from the starting node, while the h(n) represents the heuristic cost which calculated by finding the distance from the current node to the goal node. This way this heuristic works is by estimating the distance to the goal, where we prioritize nodes that can lead to an optimal solution. Through the use of a Euclidean Distance heuristic, the A* algorithm can find the goal state in a more efficient way.  In our implementation, we first created a general A* search in our Algorithm.cpp that begins at the root node of the tree and initializes a priority queue to manage the nodes based on their cost estimates. In a loop, the current node is initialized to the node with the lowest estimated cost, and if it reaches a goal state, returns the solution node and the size of the checked space. If the goal state is not reached, we have implemented a space expanding function to generate and explore the child nodes of the current nodes, and employ the same process. We call the A* with the EuclideanDistHueristic function in our Heuristicfunc.cpp. The function essentially calculates how far the current state of the 8-puzzle is from the goal state through calculating the Euclidean distance of each tile from its goal tile position to find the optimal solution. 
 
 ## Test Cases
-Trivial:                Easy:               Oh Boy: 
-1 2 3                    1 2 *                 8 7 1
-4 5 6                    4 5 3                 6 * 2
-7 8 *                    7 8 6                 5 4 3
-
-Very Easy:          Doable:            Impossible:
-1 2 3                    * 1 2                 1 2 3
-4 5 6                    4 5 6                 4 5 6
-7 * 8                    7 8 6                 8 7 *
+* <img width="281" alt="Screenshot 2025-01-04 at 12 28 04 PM" src="https://github.com/user-attachments/assets/2e8c38d1-9e5b-4e44-84c1-7bfb4a52a8cf" />
 
 We tested our code by making sure that it was able to solve the following test cases above. If the test case was the one where it was solvable, it would reach the goal state and relay an output of “Goal!!!” along with all the other necessary information. If the goal state was not reached, it would relay an output of “No solution found.” 
 
